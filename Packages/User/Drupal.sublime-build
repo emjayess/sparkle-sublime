@@ -1,0 +1,5 @@
+{
+  "cmd": ["phpcs", "--report=emacs", "--standard=Drupal", "--extensions=php,module,inc,install,test,profile,theme", "$file"],
+  "file_regex": "^(.*):(.*):(.*):(.*)$",
+  "env" : { "PATH" : "/usr/bin/phpcs:$PATH" }
+}

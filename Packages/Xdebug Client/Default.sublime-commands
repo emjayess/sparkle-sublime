@@ -1,0 +1,129 @@
+[
+    {
+        "caption": "Xdebug: Start Debugging",
+        "command": "xdebug_session_start"
+    },
+    {
+        "caption": "Xdebug: Start Debugging (Launch Browser)",
+        "command": "xdebug_session_start",
+        "args"   : {"launch_browser" : true}
+    },
+    {
+        "caption": "Xdebug: Restart Session",
+        "command": "xdebug_session_restart"
+    },
+    {
+        "caption": "Xdebug: Stop Debugging",
+        "command": "xdebug_session_stop"
+    },
+    {
+        "caption": "Xdebug: Stop Debugging (Launch Browser)",
+        "command": "xdebug_session_stop",
+        "args"   : {"launch_browser" : true}
+    },
+    {
+        "caption": "Xdebug: Stop Debugging (Close Windows)",
+        "command": "xdebug_session_stop",
+        "args"   : {"close_windows" : true}
+    },
+    {
+        "caption": "Xdebug: Add/Remove Breakpoint",
+        "command": "xdebug_breakpoint"
+    },
+    {
+        "caption": "Xdebug: Set Conditional Breakpoint",
+        "command": "xdebug_conditional_breakpoint"
+    },
+    {
+        "caption": "Xdebug: Clear Breakpoints",
+        "command": "xdebug_clear_breakpoints"
+    },
+    {
+        "caption": "Xdebug: Clear All Breakpoints",
+        "command": "xdebug_clear_all_breakpoints"
+    },
+    {
+        "caption": "Xdebug: Set Watch Expression",
+        "command": "xdebug_watch"
+    },
+    {
+        "caption": "Xdebug: Edit Watch Expression",
+        "command": "xdebug_watch",
+        "args"   : {"edit" : true}
+    },
+    {
+        "caption": "Xdebug: Remove Watch Expression",
+        "command": "xdebug_watch",
+        "args"   : {"remove" : true}
+    },
+    {
+        "caption": "Xdebug: Clear Watch Expressions",
+        "command": "xdebug_watch",
+        "args"   : {"clear" : true}
+    },
+    {
+        "caption": "Xdebug: Session - Evaluate",
+        "command": "xdebug_evaluate"
+    },
+    {
+        "caption": "Xdebug: Session - Execute",
+        "command": "xdebug_user_execute"
+    },
+    {
+        "caption": "Xdebug: Session - Status",
+        "command": "xdebug_status"
+    },
+    {
+        "caption": "Xdebug: Breakpoint - Run",
+        "command": "xdebug_continue",
+        "args"   : {"command" : "run"}
+    },
+    {
+        "caption": "Xdebug: Breakpoint - Run To Line",
+        "command": "xdebug_run_to_line"
+    },
+    {
+        "caption": "Xdebug: Breakpoint - Step Over",
+        "command": "xdebug_continue",
+        "args"   : {"command" : "step_over"}
+    },
+    {
+        "caption": "Xdebug: Breakpoint - Step Into",
+        "command": "xdebug_continue",
+        "args"   : {"command" : "step_into"}
+    },
+    {
+        "caption": "Xdebug: Breakpoint - Step Out",
+        "command": "xdebug_continue",
+        "args"   : {"command" : "step_out"}
+    },
+    {
+        "caption": "Xdebug: Breakpoint - Stop",
+        "command": "xdebug_continue",
+        "args"   : {"command" : "stop"}
+    },
+    {
+        "caption": "Xdebug: Breakpoint - Detach",
+        "command": "xdebug_continue",
+        "args"   : {"command" : "detach"}
+    },
+    {
+        "caption": "Xdebug: Close Windows",
+        "command": "xdebug_layout",
+        "args"   : {"close_windows" : true}
+    },
+    {
+        "caption": "Xdebug: Restore Layout",
+        "command": "xdebug_layout",
+        "args"   : {"restore" : true}
+    },
+    {
+        "caption": "Preferences: Xdebug Settings – Default",
+        "command": "xdebug_settings"
+    },
+    {
+        "caption": "Preferences: Xdebug Settings – User",
+        "command": "open_file",
+        "args"   : {"file" : "${packages}/User/Xdebug.sublime-settings"}
+    }
+]
