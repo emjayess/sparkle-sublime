@@ -1,2 +1,6 @@
 # Ignore License, Session, Auto Save Session...
 Settings/*
+Packages/User/Package Control.cache
+Packages/User/Package Control.last-run
+Packages/User/sftp_servers
+Packages/User/Xdebug.breakpoints
