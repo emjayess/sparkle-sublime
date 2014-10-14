@@ -1,0 +1,24 @@
+[
+    {
+        "caption": "ClassHierarchy: Re/Build Ctags for Class Hierarchy",
+        "command": "rebuild_hierarchy_ctags"
+    },
+    {
+        "caption": "ClassHierarchy: Re/Load Hierarchy Tree",
+        "command": "reload_hierarchy_tree"
+    },
+    {
+        "caption": "ClassHierarchy: Show Upward Hierarchy",
+        "command": "show_upward_hierarchy",
+        "args": {
+            "no_symbol": true
+        }
+    },
+    {
+        "caption": "ClassHierarchy: Show Downward Hierarchy",
+        "command": "show_downward_hierarchy",
+        "args": {
+            "no_symbol": true
+        }
+    }
+]

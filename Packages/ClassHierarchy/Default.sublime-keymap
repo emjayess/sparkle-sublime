@@ -1,0 +1,18 @@
+[
+    {
+        "keys": ["ctrl+shift+h", "ctrl+shift+b"],
+        "command": "rebuild_hierarchy_ctags"
+    },
+    {
+        "keys": ["ctrl+shift+h", "ctrl+shift+t"],
+        "command": "reload_hierarchy_tree"
+    },
+    {
+        "keys": ["ctrl+shift+h", "ctrl+shift+u"],
+        "command": "show_upward_hierarchy"
+    },
+    {
+        "keys": ["ctrl+shift+h", "ctrl+shift+d"],
+        "command": "show_downward_hierarchy"
+    }
+]
