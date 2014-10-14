@@ -1,0 +1,23 @@
+{
+    // Set this to your full local PHP path
+    // homebrew managed php will be linked in /usr/local/bin
+    "phpcs_php_prefix_path": "/usr/local/bin/php",
+
+    // Set this to your full local phpcs path
+    // We know this is available at ~/.composer/vendor/bin/phpcs
+    // However, that will not work, you cannot use the "~"
+    // Get the real path by running "which ~/.composer/vendor/bin/phpcs" from Terminal
+    // It should look something like this:
+    "phpcs_executable_path": "/Users/emjayess/.composer/vendor/bin/phpcs",
+
+    // The default coding standard is PEAR
+    // I use PSR2 (see below)
+    // To see a list of available coding standards, run "phpcs -i" from Terminal
+    "phpcs_additional_args": {
+        "--standard": "PSR2",
+        "-n": ""
+    },
+
+    // Again, set this to your full local PHP path
+    "phpcs_php_path": "/usr/local/bin/php"
+}

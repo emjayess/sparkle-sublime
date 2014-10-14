@@ -1,0 +1,47 @@
+{
+
+    // Which port number Sublime Text should listen
+    // to connect with debugger engine.
+    "port": 80
+
+    // Maximum amount of array children
+    // and object's properties to return.
+    //"max_children": 32,
+
+    // Maximum amount of
+    // variable data to initially retrieve.
+    //"max_data": 1024,
+
+    // Maximum amount of nested levels to retrieve
+    // of array elements and object properties.
+    //"max_depth": 1,
+
+    // Always close debug windows and restore layout on session stop.
+    //"close_on_stop": false,
+
+    // Do not show possible password values in context output.
+    //"hide_password": false,
+
+    // Show in output parsed response instead of raw XML.
+    //"pretty_output": false,
+
+    // Always launch browser on session start/stop.
+    // Note: This will only work if you have the 'url' setting configured.
+    //"launch_browser": false,
+
+    // Path to Python installation on your system.
+    // Which is being used to load missing modules.
+    //
+    // It is recommended to configure your Python path for Sublime Text 2
+    // especially on older UNIX systems, where some modules (xml.parsers.expat)
+    // might be missing and could improve performance of package.
+    //
+    // Example:
+    // "python_path" : "/usr/lib/python2.7"
+    //"python_path" : "",
+
+    // Show detailed log information about communication
+    // between debugger engine and Sublime Text.
+    // Log can be found at Packages/User/Xdebug.log
+    //"debug": false
+}

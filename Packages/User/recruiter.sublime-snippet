@@ -1,0 +1,17 @@
+<snippet>
+  <content><![CDATA[
+Dear ${1:Recruiter Name},
+
+Thanks for ${2:effort put put into resume review} my resume and considering me for the position of ${3:title} at ${4:company name}. It definitely sounds like the ${5:positive adjective} opportunity for programmers since ${6:hottest new social network}.
+
+While my experience in ${7:ancient and cringe-inducing technology} is only ${8:experience level}, normally I'd jump at the chance to pursue this position. But I'm currently ${9:lame excuse}.
+
+I wish you ${10:degree to which you hope the recruiter succeeds} in your quest to fill this position.
+
+${11:friendly or sarcastic sign off},
+${0:Your Name}
+]]></content>
+  <tabTrigger>recruiter</tabTrigger>
+  <scope>text</scope>
+  <description>Crush a recruiter's dreams with a snarky reply</description>
+</snippet>

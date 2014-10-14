@@ -1,9 +1,57 @@
 {
+	"auto_upgrade": true,
+	"auto_upgrade_frequency": 12,
+	"auto_upgrade_last_run": null,
+	"cache_length": 3600,
 	"installed_packages":
 	[
 		"AdvancedNewFile",
 		"Bower",
+		"ClassHierarchy",
+		"CTags",
+		"DocBlockr",
+		"Dust.js",
+		"Emmet",
+		"Figlet Big ASCII Text",
+		"FindKeyConflicts",
+		"Git",
+		"Gitignore",
+		"Goto Drupal API",
+		"JavaScriptNext - ES6 Syntax",
+		"jQuery",
+		"jQuery Snippets pack",
+		"JsRun",
+		"Keymaps",
+		"LESS",
+		"LESS-build",
+		"Live CSS",
+		"LiveStyle",
+		"MacTerminal",
+		"MarkdownEditing",
+		"Modific",
+		"nginx",
 		"Package Control",
-		"PackageResourceViewer"
-	]
+		"PackageResourceViewer",
+		"PHP-Twig",
+		"Phpcs",
+		"PhpDoc",
+		"PHPUnit",
+		"Require Node.js Modules Helper",
+		"Sass",
+		"SFTP",
+		"SideBarEnhancements",
+		"SmartMarkdown",
+		"SnippetMaker",
+		"SSH Config",
+		"sublime-github",
+		"SublimeCodeIntel",
+		"SyncedSideBar",
+		"Theme - Flatland",
+		"Xdebug Client"
+	],
+	"repositories":
+	[
+		"https://github.com/thinkpixellab/flatland/"
+	],
+	"timeout": 10
 }
