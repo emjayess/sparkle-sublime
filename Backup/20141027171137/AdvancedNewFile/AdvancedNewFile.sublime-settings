@@ -149,8 +149,5 @@
     "append_extension_on_copy": true,
 
     // Same as `rename_default`, but applied to copy command.
-    "copy_default": "",
-
-    // Same as `rename_default`, but applied to cut to default command.
-    "cut_to_file_default": ""
+    "copy_default": ""
 }

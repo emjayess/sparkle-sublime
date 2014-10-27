@@ -47,8 +47,7 @@ mods_load_order = [
     '.commands.new_file_command',
     ".commands.move_file_command",
     ".commands.delete_file_command",
-    ".commands.copy_file_command",
-    ".commands.cut_to_file"
+    ".commands.copy_file_command"
 ]
 
 for suffix in mods_load_order:
