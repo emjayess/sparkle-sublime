@@ -27,7 +27,6 @@ mods_load_order = [
 
     ".lib",
     ".lib.package_resources",
-    ".lib.ushlex",
 
     ".completions",
     '.completions.nix_completion',
