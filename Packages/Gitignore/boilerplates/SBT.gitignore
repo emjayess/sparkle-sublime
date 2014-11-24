@@ -1,9 +1,7 @@
-# Simple Build Tool
-# http://www.scala-sbt.org/release/docs/Getting-Started/Directories.html#configuring-version-control
+# SBT .gitignore
+# recommended: http://code.google.com/p/simple-build-tool/wiki/Setup#Version_Control
 
 target/
 lib_managed/
 src_managed/
 project/boot/
-.history
-.cache

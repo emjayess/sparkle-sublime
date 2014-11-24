@@ -9,7 +9,6 @@
 *.bz2
 *.xz
 *.lzma
-*.cab
 
 #packing-only formats
 *.iso
@@ -22,6 +21,3 @@
 *.egg
 *.deb
 *.rpm
-*.msi
-*.msm
-*.msp

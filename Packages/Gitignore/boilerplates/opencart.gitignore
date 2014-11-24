@@ -1,11 +1,10 @@
-.htaccess
-/config.php
+config.php
 admin/config.php
 
 !index.html
 
-download/
-image/data/
-image/cache/
-system/cache/
-system/logs/
+download
+image/cache/*.jpg
+image/cache/data/*
+system/cache
+system/logs

@@ -1,13 +1,15 @@
 *.pydevproject
+.project
 .metadata
-.gradle
-bin/
-tmp/
+bin/**
+tmp/**
+tmp/**/*
 *.tmp
 *.bak
 *.swp
 *~.nib
 local.properties
+.classpath
 .settings/
 .loadpath
 
@@ -22,9 +24,3 @@ local.properties
 
 # PDT-specific
 .buildpath
-
-# sbteclipse plugin 
-.target
-
-# TeXlipse plugin
-.texlipse

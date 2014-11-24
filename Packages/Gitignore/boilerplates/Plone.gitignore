@@ -1,3 +1,4 @@
+*~
 *.pyc
 *.pyo
 *.tmp*
@@ -6,7 +7,17 @@
 *.EGG
 *.egg-info
 *.EGG-INFO
+*.kpf
+*.swp
+*.wpr
 .*.cfg
+.installed.cfg
+.mr.developer.cfg
+.hg/
+.bzr/
+.svn/
+.project
+.pydevproject
 bin/
 build/
 develop-eggs/
@@ -16,3 +27,8 @@ fake-eggs/
 parts/
 dist/
 var/
+
+
+
+# OSX
+.DS_Store
