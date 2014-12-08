@@ -17,7 +17,7 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
-		"SyncedSideBar",
+		"Live CSS",
 		"PhpDoc",
 		"SublimeCodeIntel",
 		"Vintage",
@@ -26,7 +26,7 @@
 		"SmartMarkdown",
 		"PHPUnit",
 		"Require Node.js Modules Helper",
-		"Live CSS"
+		"SyncedSideBar"
 	],
 	"line_padding_bottom": 1,
 	"line_padding_top": 1,
