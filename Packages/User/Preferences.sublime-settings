@@ -26,7 +26,9 @@
 		"SmartMarkdown",
 		"PHPUnit",
 		"Require Node.js Modules Helper",
-		"SyncedSideBar"
+		"SyncedSideBar",
+		"DocBlockr",
+		"jQuery"
 	],
 	"line_padding_bottom": 1,
 	"line_padding_top": 1,
