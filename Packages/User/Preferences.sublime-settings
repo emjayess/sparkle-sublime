@@ -26,7 +26,8 @@
 		"sublime-github",
 		"PHPUnit",
 		"Require Node.js Modules Helper",
-		"Live CSS"
+		"Live CSS",
+		"AdvancedNewFile"
 	],
 	"line_padding_bottom": 1,
 	"line_padding_top": 1,
