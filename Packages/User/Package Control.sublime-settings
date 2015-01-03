@@ -3,6 +3,11 @@
 	"auto_upgrade_frequency": 12,
 	"auto_upgrade_last_run": null,
 	"cache_length": 3600,
+	"installed_dependencies":
+	[
+		"0_package_control_loader",
+		"bz2"
+	],
 	"installed_packages":
 	[
 		"AdvancedNewFile",
