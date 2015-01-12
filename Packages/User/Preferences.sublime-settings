@@ -22,11 +22,13 @@
 		"Vintage",
 		"Phpcs",
 		"SmartMarkdown",
-		"SyncedSideBar",
+		"Live CSS",
 		"sublime-github",
 		"PHPUnit",
+		"DustBuster",
 		"Require Node.js Modules Helper",
-		"Live CSS"
+		"Dust.js",
+		"SyncedSideBar"
 	],
 	"line_padding_bottom": 1,
 	"line_padding_top": 1,
