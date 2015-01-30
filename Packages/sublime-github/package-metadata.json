@@ -1,1 +1,1 @@
-{"description": "Sublime Text 2/3 plugin that provides a number of useful commands for GitHub.", "url": "https://github.com/bgreenlee/sublime-github", "platforms": ["*"], "version": "2014.12.30.19.10.10", "sublime_text": "*", "dependencies": []}
+{"description": "Sublime Text 2/3 plugin that provides a number of useful commands for GitHub.", "url": "https://github.com/bgreenlee/sublime-github", "platforms": ["*"], "version": "1.0.0", "sublime_text": "*", "dependencies": []}
