@@ -25,6 +25,7 @@
 {! dpd|dust-partial-dynamic !}
 {>"path/to/partial{dynamic-param}"/}
 
+
 {! de|dust-equals !}
 {@eq value="bar"}{/eq}
 
