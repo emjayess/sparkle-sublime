@@ -5,10 +5,11 @@
 	"cache_length": 3600,
 	"in_process_packages":
 	[
+		"DustBuster",
+		"JavaScriptNext - ES6 Syntax"
 	],
 	"installed_dependencies":
 	[
-		"0_package_control_loader",
 		"bz2"
 	],
 	"installed_packages":

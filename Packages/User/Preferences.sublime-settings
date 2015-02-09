@@ -26,7 +26,9 @@
 		"sublime-github",
 		"PHPUnit",
 		"Require Node.js Modules Helper",
-		"SyncedSideBar"
+		"SyncedSideBar",
+		"DustBuster",
+		"JavaScriptNext - ES6 Syntax"
 	],
 	"line_padding_bottom": 1,
 	"line_padding_top": 1,
