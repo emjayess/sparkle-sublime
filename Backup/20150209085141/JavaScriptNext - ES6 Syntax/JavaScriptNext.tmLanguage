@@ -340,29 +340,6 @@
 							<string>punctuation.separator.parameter.function.js</string>
 						</dict>
 						<dict>
-							<key>begin</key>
-							<string>=</string>
-							<key>beginCaptures</key>
-							<dict>
-								<key>0</key>
-								<dict>
-									<key>name</key>
-									<string>keyword.operator.assignment.js</string>
-								</dict>
-							</dict>
-							<key>end</key>
-							<string>(?=[,)])</string>
-							<key>name</key>
-							<string>meta.parameter.optional.js</string>
-							<key>patterns</key>
-							<array>
-								<dict>
-									<key>include</key>
-									<string>$self</string>
-								</dict>
-							</array>
-						</dict>
-						<dict>
 							<key>include</key>
 							<string>#comments</string>
 						</dict>
@@ -1452,7 +1429,7 @@
 					<string>(?x)
   \b(?:(static)\s+)?
   ([_$a-zA-Z][_$\w]*)\s*
-  (?=\([^())]*\)(?:\s|/\*.*\*/)*\{)</string>
+  (?=\([^())]*\)\s*\{)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1484,7 +1461,7 @@
   \b(?:(static)\s+)?
   (get|set)\s+
   ([_$a-zA-Z][_$\w]*)\s*
-  (?=\([^())]*\)(?:\s|/\*.*\*/)*\{)</string>
+  (?=\([^())]*\)\s*\{)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>

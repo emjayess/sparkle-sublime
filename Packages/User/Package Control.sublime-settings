@@ -5,8 +5,6 @@
 	"cache_length": 3600,
 	"in_process_packages":
 	[
-		"DustBuster",
-		"JavaScriptNext - ES6 Syntax"
 	],
 	"installed_dependencies":
 	[
