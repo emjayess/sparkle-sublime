@@ -20,23 +20,23 @@ repository:
     - include: '#literal-regex'               # before operators to avoid ambiguities
     - include: '#literal-number'
     - include: '#literal-quasi'
-    - include: '#literal-language-constant'
 
-    # keywords/operators
-    - include: '#literal-keywords'
-
-    # modules/classes/functions
-    - include: '#literal-module'
-    - include: '#literal-class'
+    # object literals
     - include: '#literal-function-storage'
-    - include: '#literal-method'
     - include: '#literal-arrow-function-storage'
     - include: '#literal-prototype-storage'   # after literal-function-storage, which includes some prototype strings
     - include: '#literal-labels'
 
-    # after literal-function-storage & literal-labels which requires the below in some cases
+    # after object literals which requires the below in some cases
     - include: '#literal-string'
+    - include: '#literal-keywords'
+    - include: '#literal-language-constant'
     - include: '#literal-language-variable'
+
+    # modules/classes/methods
+    - include: '#literal-module'
+    - include: '#literal-class'
+    - include: '#literal-method'
 
     # function calls
     - include: '#literal-method-call'
@@ -146,8 +146,10 @@ repository:
       endCaptures:
         '1': {name: punctuation.definition.parameters.end.js}
       patterns:
+      - name: keyword.operator.spread.js
+        match: (?<!\.)\.\.\.
       - name: variable.parameter.function.js
-        match: '[_$a-zA-Z][_$\w]*'
+        match: '[_$a-zA-Z][$\w]*'
       - name: punctuation.separator.parameter.function.js
         match: ','
       - name: meta.parameter.optional.js
@@ -171,7 +173,7 @@ repository:
       begin: >-
         (?x)
           (?<!\.)\b(class)
-          \s+([_$a-zA-Z][_$\w]*)
+          \s+([_$a-zA-Z][$\w]*)
       beginCaptures:
         '1': {name: storage.type.class.js}
         '2': {name: entity.name.class.js}
@@ -205,7 +207,7 @@ repository:
       begin: >-
         (?x)
           \b(?:(static)\s+)?
-          ([_$a-zA-Z][_$\w]*)\s*
+          ([_$a-zA-Z][$\w]*)\s*
           (?=\([^())]*\)(?:\s|/\*.*\*/)*\{)
       beginCaptures:
         '1': {name: storage.type.js}
@@ -220,7 +222,7 @@ repository:
         (?x)
           \b(?:(static)\s+)?
           (get|set)\s+
-          ([_$a-zA-Z][_$\w]*)\s*
+          ([_$a-zA-Z][$\w]*)\s*
           (?=\([^())]*\)(?:\s|/\*.*\*/)*\{)
       beginCaptures:
         '1': {name: storage.type.js}
@@ -234,14 +236,14 @@ repository:
     patterns:
     # e.g. Sound.prototype = {  } when extending an object
     - name: meta.prototype.declaration.js
-      match: ([_$a-zA-Z][_$\w]*)\.(prototype)\s*=\s*
+      match: ([_$a-zA-Z][$\w]*)\.(prototype)\s*=\s*
       captures:
         '1': {name: entity.name.class.js}
         '2': {name: variable.language.prototype.js}
 
     # e.g. Sound.prototype
     - name: meta.prototype.access.js
-      match: ([_$a-zA-Z][_$\w]*)\.(prototype)\b
+      match: ([_$a-zA-Z][$\w]*)\.(prototype)\b
       captures:
         '1': {name: entity.name.class.js}
         '2': {name: variable.language.prototype.js}
@@ -253,7 +255,7 @@ repository:
       begin: >-
         (?x)
           \b(function(?:\s*\*|(?=\s|[(])))
-          \s*([_$a-zA-Z][_$\w]*)?\s*
+          \s*([_$a-zA-Z][$\w]*)?\s*
       beginCaptures:
         '1': {name: storage.type.function.js}
         '2': {name: entity.name.function.js}
@@ -265,9 +267,9 @@ repository:
     - name: meta.prototype.function.js
       begin: >-
         (?x)
-          (\b_?[A-Z][_$\w]*)?
+          (\b_?[A-Z][$\w]*)?
           \.(prototype)
-          \.([_$a-zA-Z][_$\w]*)
+          \.([_$a-zA-Z][$\w]*)
           \s*=
           \s*(function(?:\s*\*|(?=\s|[(])))\s*
       beginCaptures:
@@ -283,8 +285,8 @@ repository:
     - name: meta.function.static.js
       begin: >-
         (?x)
-          (\b_?[A-Z][_$\w]*)?
-          \.([_$a-zA-Z][_$\w]*)
+          (\b_?[A-Z][$\w]*)?
+          \.([_$a-zA-Z][$\w]*)
           \s*=
           \s*(function(?:\s*\*|(?=\s|[(])))\s*
       beginCaptures:
@@ -299,7 +301,7 @@ repository:
     - name: meta.function.json.js
       begin: >-
         (?x)
-          \b([_$a-zA-Z][_$\w]*)
+          \b([_$a-zA-Z][$\w]*)
           \s*(:)
           \s*(function(?:\s*\*|(?=\s|[(])))\s*
       beginCaptures:
@@ -352,9 +354,9 @@ repository:
     - name: meta.prototype.function.arrow.js
       begin: >-
         (?x)
-          (\b_?[A-Z][_$\w]*)?
+          (\b_?[A-Z][$\w]*)?
           \.(prototype)
-          \.([_$a-zA-Z][_$\w]*)
+          \.([_$a-zA-Z][$\w]*)
           \s*=
           \s*(?=\([^()]*\)\s*(=>))
       beginCaptures:
@@ -371,8 +373,8 @@ repository:
     - name: meta.function.static.arrow.js
       begin: >-
         (?x)
-          (\b_?[A-Z][_$\w]*)?
-          \.([_$a-zA-Z][_$\w]*)
+          (\b_?[A-Z][$\w]*)?
+          \.([_$a-zA-Z][$\w]*)
           \s*=
           \s*(?=\([^()]*\)\s*(=>))
       beginCaptures:
@@ -388,7 +390,7 @@ repository:
     - name: meta.function.json.arrow.js
       begin: >-
         (?x)
-          \b([_$a-zA-Z][_$\w]*)
+          \b([_$a-zA-Z][$\w]*)
           \s*(:)
           \s*(?=\([^()]*\)\s*(=>))
       beginCaptures:
@@ -431,7 +433,7 @@ repository:
     - name: meta.function-call.without-arguments.js
       match: >-
         (?x)
-          ([_$a-zA-Z][_$\w]*)\s*
+          ([_$a-zA-Z][$\w]*)\s*
           (\(\s*\))
       captures:
         '1': {name: entity.name.function.js}
@@ -440,7 +442,7 @@ repository:
     - name: meta.function-call.with-arguments.js
       match: >-
         (?x)
-          ([_$a-zA-Z][_$\w]*)\s*
+          ([_$a-zA-Z][$\w]*)\s*
           (?=\()
       captures:
         '1': {name: entity.name.function.js}
@@ -451,8 +453,8 @@ repository:
       match: >-
         (?x)
           (?:(?<=\.)|\b)
-          ([A-Z][_$\w]*)\s*\.
-          ([_$a-zA-Z][_$\w]*)\s*
+          ([A-Z][$\w]*)\s*\.
+          ([_$a-zA-Z][$\w]*)\s*
           (\(\s*\))
       captures:
         '1': {name: variable.other.class.js}
@@ -463,8 +465,8 @@ repository:
       match: >-
         (?x)
           (?:(?<=\.)|\b)
-          ([A-Z][_$\w]*)\s*\.
-          ([_$a-zA-Z][_$\w]*)\s*
+          ([A-Z][$\w]*)\s*\.
+          ([_$a-zA-Z][$\w]*)\s*
           (?=\()
       captures:
         '1': {name: variable.other.class.js}
@@ -474,7 +476,7 @@ repository:
       match: >-
         (?x)
           (?<=\.)
-          ([_$a-zA-Z][_$\w]*)\s*
+          ([_$a-zA-Z][$\w]*)\s*
           (\(\s*\))
       captures:
         '1': {name: entity.name.function.js}
@@ -484,7 +486,7 @@ repository:
       match: >-
         (?x)
           (?<=\.)
-          ([_$a-zA-Z][_$\w]*)\s*
+          ([_$a-zA-Z][$\w]*)\s*
           (?=\()
       captures:
         '1': {name: entity.name.function.js}
@@ -492,16 +494,16 @@ repository:
   literal-language-variable:
     patterns:
     - name: variable.language.arguments.js
-      match: (?<!\.)\b(arguments)\b
+      match: (?<!(?<!\.\.)\.)\b(arguments)\b
 
     - name: variable.language.super.js
-      match: (?<!\.)\b(super)\b
+      match: (?<!(?<!\.\.)\.)\b(super)\b
 
     - name: variable.language.this.js
-      match: (?<!\.)\b(this)\b
+      match: (?<!(?<!\.\.)\.)\b(this)\b
 
     - name: variable.language.self.js
-      match: (?<!\.)\b(self)\b
+      match: (?<!(?<!\.\.)\.)\b(self)\b
 
     - name: variable.language.proto.js
       match: (?<=\.)\b(__proto__)\b
@@ -532,14 +534,14 @@ repository:
   literal-keywords:
     patterns:
     - name: meta.instance.constructor
-      begin: (new)\s+(?=[_$a-zA-Z][_$\w.]*)
+      begin: (new)\s+(?=[_$a-zA-Z][$\w.]*)
       beginCaptures:
         '1': {name: keyword.operator.new.js}
-      end: (?![_$a-zA-Z][_$\w.]*)
+      end: (?![_$a-zA-Z][$\w.]*)
       patterns:
       - include: '#support'
 
-      - match: ([_$a-zA-Z][_$\w.]*\.)?([_$a-zA-Z][_$\w]*)
+      - match: ([_$a-zA-Z][$\w.]*\.)?([_$a-zA-Z][$\w]*)
         captures:
           '2': {name: entity.name.type.new.js}
 
@@ -641,6 +643,9 @@ repository:
     - name: keyword.operator.ternary.js
       match: '\?|:'
 
+    - name: keyword.operator.spread.js
+      match: (?<!\.)\.\.\.
+
   literal-labels:
     patterns:
     - begin: >-
@@ -656,7 +661,7 @@ repository:
       - include: '#literal-string'
 
     - name: constant.other.object.key.js
-      match: (?<!\.|\?|\?\s)([_$a-zA-Z][_$\w]*)\s*(:)
+      match: (?<!\.|\?|\?\s)([_$a-zA-Z][$\w]*)\s*(:)
       captures:
         '1': {name: string.unquoted.label.js}
         '2': {name: punctuation.separator.key-value.js}
@@ -781,32 +786,32 @@ repository:
 
     # dollar variables
     - name: variable.other.dollar.js
-      match: '\$[_$\w]+'
+      match: '\$[$\w]+'
 
     # e.g. Class.property
     - name: meta.property.class.js
       match: >-
         (?x)
-          \b([A-Z][_$\w]*)\s*\.
-          ([_$a-zA-Z][_$\w]*)
+          \b([A-Z][$\w]*)\s*\.
+          ([_$a-zA-Z][$\w]*)
       captures:
         '1': {name: variable.other.class.js}
         '2': {name: variable.other.property.static.js}
 
     # e.g. obj.property
     - name: variable.other.object.js
-      match: (?<!\.)[_$a-zA-Z][_$\w]*\s*(?=[\[\.])
+      match: (?<!\.)[_$a-zA-Z][$\w]*\s*(?=[\[\.])
       captures:
         '1': {name: variable.other.object.js}
 
     # e.g. obj.property
     - name: meta.property.object.js
-      match: (?<=\.)\s*[_$a-zA-Z][_$\w]*
+      match: (?<=\.)\s*[_$a-zA-Z][$\w]*
       captures:
         '2': {name: variable.other.property.js}
 
     - name: variable.other.readwrite.js
-      match: '[_$a-zA-Z][_$\w]*'
+      match: '[_$a-zA-Z][$\w]*'
 
   leading-space:
     patterns:
