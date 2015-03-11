@@ -1,0 +1,1 @@
+{"description": "Sublime Text Package for enhanced Dust.js templating", "url": "https://github.com/zanuka/dust-buster", "platforms": ["*"], "version": "1.1.10", "sublime_text": "*", "dependencies": []}

@@ -18,14 +18,6 @@
 	<array>
 		<dict>
 			<key>include</key>
-			<string>#comments</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#support</string>
-		</dict>
-		<dict>
-			<key>include</key>
 			<string>#core</string>
 		</dict>
 	</array>
@@ -36,97 +28,16 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>begin</key>
-					<string>(\()</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>meta.brace.round.js</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(\))</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>meta.brace.round.js</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.group.braces.round</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>$self</string>
-						</dict>
-					</array>
+					<key>include</key>
+					<string>#round-brackets</string>
 				</dict>
 				<dict>
-					<key>begin</key>
-					<string>(\[)</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>meta.brace.square.js</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(\])</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>meta.brace.square.js</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.group.braces.square</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>$self</string>
-						</dict>
-					</array>
+					<key>include</key>
+					<string>#square-brackets</string>
 				</dict>
 				<dict>
-					<key>begin</key>
-					<string>({)</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>meta.brace.curly.js</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(})</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>meta.brace.curly.js</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.group.braces.curly</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>$self</string>
-						</dict>
-					</array>
+					<key>include</key>
+					<string>#curly-brackets</string>
 				</dict>
 			</array>
 		</dict>
@@ -220,19 +131,82 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#leading-space</string>
+					<string>#literal-function-labels</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#literal-regex</string>
+					<string>#literal-arrow-function-labels</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#literal-number</string>
+					<string>#literal-labels</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#literal-quasi</string>
+					<string>#literal-keywords</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#literal-for</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#literal-switch</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#expression</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#literal-punctuation</string>
+				</dict>
+			</array>
+		</dict>
+		<key>curly-brackets</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>\{</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.brace.curly.js</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.brace.curly.js</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.group.braces.curly</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>expression</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#support</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -248,15 +222,19 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#literal-labels</string>
+					<string>#literal-regexp</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#literal-number</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#literal-quasi</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#literal-string</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#literal-keywords</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -268,6 +246,22 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#literal-function</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#literal-method</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#literal-arrow-function</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#literal-prototype</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#literal-module</string>
 				</dict>
 				<dict>
@@ -276,7 +270,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#literal-method</string>
+					<string>#literal-constructor</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -288,15 +282,19 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#literal-variable</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#literal-punctuation</string>
+					<string>#comments</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#brackets</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#literal-operators</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#literal-variable</string>
 				</dict>
 			</array>
 		</dict>
@@ -306,20 +304,20 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(\()</string>
+					<string>\(</string>
 					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>punctuation.definition.parameters.begin.js</string>
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(\))</string>
+					<string>\)</string>
 					<key>endCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>punctuation.definition.parameters.end.js</string>
@@ -364,7 +362,7 @@
 							<array>
 								<dict>
 									<key>include</key>
-									<string>$self</string>
+									<string>#expression</string>
 								</dict>
 							</array>
 						</dict>
@@ -376,266 +374,16 @@
 				</dict>
 			</array>
 		</dict>
-		<key>leading-space</key>
+		<key>literal-arrow-function-labels</key>
 		<dict>
 			<key>patterns</key>
 			<array>
-				<dict>
-					<key>begin</key>
-					<string>^(?=(\t|  ))</string>
-					<key>end</key>
-					<string>(?=[^\t\s])</string>
-					<key>name</key>
-					<string>meta.leading-tabs</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>captures</key>
-							<dict>
-								<key>1</key>
-								<dict>
-									<key>name</key>
-									<string>meta.odd-tab.group1.spaces</string>
-								</dict>
-								<key>10</key>
-								<dict>
-									<key>name</key>
-									<string>meta.even-tab.group10.spaces</string>
-								</dict>
-								<key>11</key>
-								<dict>
-									<key>name</key>
-									<string>meta.odd-tab.group11.spaces</string>
-								</dict>
-								<key>2</key>
-								<dict>
-									<key>name</key>
-									<string>meta.even-tab.group2.spaces</string>
-								</dict>
-								<key>3</key>
-								<dict>
-									<key>name</key>
-									<string>meta.odd-tab.group3.spaces</string>
-								</dict>
-								<key>4</key>
-								<dict>
-									<key>name</key>
-									<string>meta.even-tab.group4.spaces</string>
-								</dict>
-								<key>5</key>
-								<dict>
-									<key>name</key>
-									<string>meta.odd-tab.group5.spaces</string>
-								</dict>
-								<key>6</key>
-								<dict>
-									<key>name</key>
-									<string>meta.even-tab.group6.spaces</string>
-								</dict>
-								<key>7</key>
-								<dict>
-									<key>name</key>
-									<string>meta.odd-tab.group7.spaces</string>
-								</dict>
-								<key>8</key>
-								<dict>
-									<key>name</key>
-									<string>meta.even-tab.group8.spaces</string>
-								</dict>
-								<key>9</key>
-								<dict>
-									<key>name</key>
-									<string>meta.odd-tab.group9.spaces</string>
-								</dict>
-							</dict>
-							<key>match</key>
-							<string>(    )(    )?(    )?(    )?(    )?(    )?(    )?(    )?(    )?(    )?(    )?</string>
-						</dict>
-						<dict>
-							<key>captures</key>
-							<dict>
-								<key>1</key>
-								<dict>
-									<key>name</key>
-									<string>meta.odd-tab.group1.tab</string>
-								</dict>
-								<key>10</key>
-								<dict>
-									<key>name</key>
-									<string>meta.even-tab.group10.tab</string>
-								</dict>
-								<key>11</key>
-								<dict>
-									<key>name</key>
-									<string>meta.odd-tab.group11.tab</string>
-								</dict>
-								<key>2</key>
-								<dict>
-									<key>name</key>
-									<string>meta.even-tab.group2.tab</string>
-								</dict>
-								<key>3</key>
-								<dict>
-									<key>name</key>
-									<string>meta.odd-tab.group3.tab</string>
-								</dict>
-								<key>4</key>
-								<dict>
-									<key>name</key>
-									<string>meta.even-tab.group4.tab</string>
-								</dict>
-								<key>5</key>
-								<dict>
-									<key>name</key>
-									<string>meta.odd-tab.group5.tab</string>
-								</dict>
-								<key>6</key>
-								<dict>
-									<key>name</key>
-									<string>meta.even-tab.group6.tab</string>
-								</dict>
-								<key>7</key>
-								<dict>
-									<key>name</key>
-									<string>meta.odd-tab.group7.tab</string>
-								</dict>
-								<key>8</key>
-								<dict>
-									<key>name</key>
-									<string>meta.even-tab.group8.tab</string>
-								</dict>
-								<key>9</key>
-								<dict>
-									<key>name</key>
-									<string>meta.odd-tab.group9.tab</string>
-								</dict>
-							</dict>
-							<key>match</key>
-							<string>(\t)(\t)?(\t)?(\t)?(\t)?(\t)?(\t)?(\t)?(\t)?(\t)?(\t)?</string>
-						</dict>
-					</array>
-				</dict>
-			</array>
-		</dict>
-		<key>literal-arrow-function-storage</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>begin</key>
-					<string>(?x)
-  (?=\([^()]*\)\s*(=&gt;))</string>
-					<key>end</key>
-					<string>(?&lt;=\))\s*(=&gt;)</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.function.arrow.js</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.function.arrow.js</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#function-declaration-parameters</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>(?x)
-  (\b_?[A-Z][$\w]*)?
-  \.(prototype)
-  \.([_$a-zA-Z][$\w]*)
-  \s*=
-  \s*(?=\([^()]*\)\s*(=&gt;))</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.class.js</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>variable.language.prototype.js</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.function.js</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?&lt;=\))\s*(=&gt;)</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.function.arrow.js</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.prototype.function.arrow.js</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#function-declaration-parameters</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>(?x)
-  (\b_?[A-Z][$\w]*)?
-  \.([_$a-zA-Z][$\w]*)
-  \s*=
-  \s*(?=\([^()]*\)\s*(=&gt;))</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.class.js</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.function.js</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?&lt;=\))\s*(=&gt;)</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.function.arrow.js</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.function.static.arrow.js</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#function-declaration-parameters</string>
-						</dict>
-					</array>
-				</dict>
 				<dict>
 					<key>begin</key>
 					<string>(?x)
   \b([_$a-zA-Z][$\w]*)
   \s*(:)
+  \s*(async)?
   \s*(?=\([^()]*\)\s*(=&gt;))</string>
 					<key>beginCaptures</key>
 					<dict>
@@ -648,6 +396,11 @@
 						<dict>
 							<key>name</key>
 							<string>punctuation.separator.key-value.js</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.js</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -676,8 +429,9 @@
   (?:
     ((')((?:[^']|\\')*)('))|
     ((")((?:[^"]|\\")*)("))
-  )\s*
-  (:)\s*
+  )
+  \s*(:)
+  \s*(async)?
   \s*(?=\([^()]*\)\s*(=&gt;))</string>
 					<key>beginCaptures</key>
 					<dict>
@@ -685,6 +439,11 @@
 						<dict>
 							<key>name</key>
 							<string>string.quoted.single.js</string>
+						</dict>
+						<key>10</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.js</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -749,6 +508,143 @@
 				</dict>
 			</array>
 		</dict>
+		<key>literal-arrow-function-storage</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?x)
+  (\basync)?\s*
+  (?=\([^()]*\)\s*(=&gt;))</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.js</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\))\s*(=&gt;)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.function.arrow.js</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.function.arrow.js</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#function-declaration-parameters</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?x)
+  (\b_?[A-Z][$\w]*)?
+  \.(prototype)
+  \.([_$a-zA-Z][$\w]*)
+  \s*=
+  \s*(async)?
+  \s*(?=\([^()]*\)\s*(=&gt;))</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.class.js</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>variable.language.prototype.js</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.js</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.js</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\))\s*(=&gt;)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.function.arrow.js</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.prototype.function.arrow.js</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#function-declaration-parameters</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?x)
+  (\b_?[A-Z][$\w]*)?
+  \.([_$a-zA-Z][$\w]*)
+  \s*=
+  \s*(async)?
+  \s*(?=\([^()]*\)\s*(=&gt;))</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.class.js</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.js</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.js</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\))\s*(=&gt;)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.function.arrow.js</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.function.static.arrow.js</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#function-declaration-parameters</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
 		<key>literal-class</key>
 		<dict>
 			<key>patterns</key>
@@ -757,7 +653,7 @@
 					<key>begin</key>
 					<string>(?x)
   (?&lt;!\.)\b(class)
-  \s+([_$a-zA-Z][$\w]*)</string>
+  \s+((?!\b(extends)\b)[_$a-zA-Z][$\w]*)?</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -787,10 +683,10 @@
 					<array>
 						<dict>
 							<key>begin</key>
-							<string>extends</string>
+							<string>\b(extends)\b</string>
 							<key>beginCaptures</key>
 							<dict>
-								<key>0</key>
+								<key>1</key>
 								<dict>
 									<key>name</key>
 									<string>storage.type.extends.js</string>
@@ -798,21 +694,13 @@
 							</dict>
 							<key>end</key>
 							<string>(?={)</string>
-							<key>endCaptures</key>
-							<dict>
-								<key>0</key>
-								<dict>
-									<key>name</key>
-									<string>meta.brace.curly.js</string>
-								</dict>
-							</dict>
 							<key>name</key>
 							<string>meta.class.extends.js</string>
 							<key>patterns</key>
 							<array>
 								<dict>
 									<key>include</key>
-									<string>$self</string>
+									<string>#expression</string>
 								</dict>
 							</array>
 						</dict>
@@ -842,6 +730,109 @@
 								<dict>
 									<key>include</key>
 									<string>#literal-method</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>literal-constructor</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(new)\s+(?=[_$a-zA-Z][$\w.]*)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.new.js</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?![_$a-zA-Z][$\w.]*)</string>
+					<key>name</key>
+					<string>meta.instance.constructor</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#support</string>
+						</dict>
+						<dict>
+							<key>captures</key>
+							<dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>entity.name.type.new.js</string>
+								</dict>
+							</dict>
+							<key>match</key>
+							<string>([_$a-zA-Z][$\w.]*\.)?([_$a-zA-Z][$\w]*)</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>literal-for</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;!\.)\b(for)\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.loop.js</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.brace.round.js</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.for.js</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>\(</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>meta.brace.round.js</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=\))</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#literal-keyword-storage</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#expression</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#literal-punctuation</string>
 								</dict>
 							</array>
 						</dict>
@@ -892,126 +883,18 @@
 				</dict>
 			</array>
 		</dict>
-		<key>literal-function-storage</key>
+		<key>literal-function-labels</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
 					<string>(?x)
-  \b(function(?:\s*\*|(?=\s|[(])))
-  \s*([_$a-zA-Z][$\w]*)?\s*</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.function.js</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.function.js</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?&lt;=\))</string>
-					<key>name</key>
-					<string>meta.function.js</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#function-declaration-parameters</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>(?x)
-  (\b_?[A-Z][$\w]*)?
-  \.(prototype)
-  \.([_$a-zA-Z][$\w]*)
-  \s*=
-  \s*(function(?:\s*\*|(?=\s|[(])))\s*</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.class.js</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>variable.language.prototype.js</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.function.js</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.function.js</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?&lt;=\))</string>
-					<key>name</key>
-					<string>meta.prototype.function.js</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#function-declaration-parameters</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>(?x)
-  (\b_?[A-Z][$\w]*)?
-  \.([_$a-zA-Z][$\w]*)
-  \s*=
-  \s*(function(?:\s*\*|(?=\s|[(])))\s*</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.class.js</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.function.js</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.function.js</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?&lt;=\))</string>
-					<key>name</key>
-					<string>meta.function.static.js</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#function-declaration-parameters</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>(?x)
   \b([_$a-zA-Z][$\w]*)
   \s*(:)
-  \s*(function(?:\s*\*|(?=\s|[(])))\s*</string>
+  \s*(?:(async)\s+)?
+  \s*(function)(?:\s*(\*)|(?=\s|[(]))
+  \s*([_$a-zA-Z][$\w]*)?\s*</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1027,7 +910,22 @@
 						<key>3</key>
 						<dict>
 							<key>name</key>
+							<string>storage.type.js</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
 							<string>storage.type.function.js</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.generator.asterisk.js</string>
+						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.js</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -1048,9 +946,11 @@
   (?:
     ((')((?:[^']|\\')*)('))|
     ((")((?:[^"]|\\")*)("))
-  )\s*
-  (:)\s*
-  \b(function(?:\s*\*|(?=\s|[(])))\s*</string>
+  )
+  \s*(:)
+  \s*(?:(async)\s+)?
+  \s*(function)(?:\s*(\*)|(?=\s|[(]))
+  \s*([_$a-zA-Z][$\w]*)?\s*</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1061,7 +961,22 @@
 						<key>10</key>
 						<dict>
 							<key>name</key>
+							<string>storage.type.js</string>
+						</dict>
+						<key>11</key>
+						<dict>
+							<key>name</key>
 							<string>storage.type.function.js</string>
+						</dict>
+						<key>12</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.generator.asterisk.js</string>
+						</dict>
+						<key>13</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.js</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1118,50 +1033,186 @@
 				</dict>
 			</array>
 		</dict>
-		<key>literal-keywords</key>
+		<key>literal-function-storage</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(new)\s+(?=[_$a-zA-Z][$\w.]*)</string>
+					<string>(?x)
+  (?:\b(async)\s+)?
+  \s*(function)(?:\s*(\*)|(?=\s|[(]))
+  \s*([_$a-zA-Z][$\w]*)?\s*</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.operator.new.js</string>
+							<string>storage.type.js</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.function.js</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.generator.asterisk.js</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.js</string>
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?![_$a-zA-Z][$\w.]*)</string>
+					<string>(?&lt;=\))</string>
 					<key>name</key>
-					<string>meta.instance.constructor</string>
+					<string>meta.function.js</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#support</string>
-						</dict>
-						<dict>
-							<key>captures</key>
-							<dict>
-								<key>2</key>
-								<dict>
-									<key>name</key>
-									<string>entity.name.type.new.js</string>
-								</dict>
-							</dict>
-							<key>match</key>
-							<string>([_$a-zA-Z][$\w.]*\.)?([_$a-zA-Z][$\w]*)</string>
+							<string>#function-declaration-parameters</string>
 						</dict>
 					</array>
 				</dict>
 				<dict>
+					<key>begin</key>
+					<string>(?x)
+  (\b_?[A-Z][$\w]*)?
+  \.(prototype)
+  \.([_$a-zA-Z][$\w]*)
+  \s*=
+  \s*(?:(async)\s+)?
+  \s*(function)(?:\s*(\*)|(?=\s|[(]))
+  \s*([_$a-zA-Z][$\w]*)?\s*</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.class.js</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>variable.language.prototype.js</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.js</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.js</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.function.js</string>
+						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.generator.asterisk.js</string>
+						</dict>
+						<key>7</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.js</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\))</string>
+					<key>name</key>
+					<string>meta.prototype.function.js</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#function-declaration-parameters</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?x)
+  (\b_?[A-Z][$\w]*)?
+  \.([_$a-zA-Z][$\w]*)
+  \s*=
+  \s*(?:(async)\s+)?
+  \s*(function)(?:\s*(\*)|(?=\s|[(]))
+  \s*([_$a-zA-Z][$\w]*)?\s*</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.class.js</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.js</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.js</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.function.js</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.generator.asterisk.js</string>
+						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.js</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\))</string>
+					<key>name</key>
+					<string>meta.function.static.js</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#function-declaration-parameters</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>literal-keyword-storage</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
 					<key>match</key>
-					<string>(?&lt;!\.)\b(async|const|let|var)\b</string>
+					<string>(?&lt;!\.)\b(const|let|var)\b</string>
 					<key>name</key>
 					<string>storage.type.js</string>
+				</dict>
+			</array>
+		</dict>
+		<key>literal-keywords</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#literal-keyword-storage</string>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -1171,7 +1222,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?&lt;!\.)\b(else|if)\b</string>
+					<string>(?&lt;!\.)\b(if|else)\b</string>
 					<key>name</key>
 					<string>keyword.control.conditional.js</string>
 				</dict>
@@ -1183,141 +1234,9 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?&lt;!\.)\b(break|continue|do|for|goto|while)\b</string>
+					<string>(?&lt;!\.)\b(break|continue|do|goto|while)\b</string>
 					<key>name</key>
 					<string>keyword.control.loop.js</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?&lt;!\.)\b(switch)\b</string>
-					<key>name</key>
-					<string>keyword.control.switch.js</string>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>(?&lt;!\.)\b(case|default)\b</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.switch.js</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>:</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.separator.switch.js</string>
-						</dict>
-					</dict>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>$self</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?&lt;!\.)\b(await|delete|in|instanceof|new|of|typeof|void|with)\b</string>
-					<key>name</key>
-					<string>keyword.operator.js</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?x)
-  !(?!=)| # logical-not     right-to-left   right
-  &amp;&amp;    | # logical-and     left-to-right   both
-  \|\|  | # logical-or      left-to-right   both</string>
-					<key>name</key>
-					<string>keyword.operator.logical.js</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?x)
-  =(?!=)| # assignment      right-to-left   both</string>
-					<key>name</key>
-					<string>keyword.operator.assignment.js</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?x)
-  %=   | # assignment      right-to-left   both
-  &amp;=   | # assignment      right-to-left   both
-  \*=  | # assignment      right-to-left   both
-  \+=  | # assignment      right-to-left   both
-  -=   | # assignment      right-to-left   both
-  /=   | # assignment      right-to-left   both
-  \^=  | # assignment      right-to-left   both
-  \|=  | # assignment      right-to-left   both
-  &lt;&lt;=  | # assignment      right-to-left   both
-  &gt;&gt;=  | # assignment      right-to-left   both
-  &gt;&gt;&gt;= | # assignment      right-to-left   both</string>
-					<key>name</key>
-					<string>keyword.operator.assignment.augmented.js</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?x)
-  ~    | # bitwise-not     right-to-left   right
-  &lt;&lt;   | # bitwise-shift   left-to-right   both
-  &gt;&gt;&gt;  | # bitwise-shift   left-to-right   both
-  &gt;&gt;   | # bitwise-shift   left-to-right   both
-  &amp;    | # bitwise-and     left-to-right   both
-  \^   | # bitwise-xor     left-to-right   both
-  \|     # bitwise-or      left-to-right   both</string>
-					<key>name</key>
-					<string>keyword.operator.bitwise.js</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?x)
-  &lt;=   | # relational      left-to-right   both
-  &gt;=   | # relational      left-to-right   both
-  &lt;    | # relational      left-to-right   both
-  &gt;      # relational      left-to-right   both</string>
-					<key>name</key>
-					<string>keyword.operator.relational.js</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?x)
-  ===  | # equality        left-to-right   both
-  !==  | # equality        left-to-right   both
-  ==   | # equality        left-to-right   both
-  !=     # equality        left-to-right   both</string>
-					<key>name</key>
-					<string>keyword.operator.comparison.js</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?x)
-  --   | # decrement       n/a             right-or-left
-  \+\+ | # increment       n/a             right-or-left
-  /    | # division        left-to-right   both
-  %    | # modulus         left-to-right   both
-  \*   | # multiplication  left-to-right   both
-  \+   | # addition        left-to-right   both
-  -      # subtraction     left-to-right   both</string>
-					<key>name</key>
-					<string>keyword.operator.arithmetic.js</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\?|:</string>
-					<key>name</key>
-					<string>keyword.operator.ternary.js</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?&lt;!\.)\.\.\.</string>
-					<key>name</key>
-					<string>keyword.operator.spread.js</string>
 				</dict>
 			</array>
 		</dict>
@@ -1328,7 +1247,7 @@
 				<dict>
 					<key>begin</key>
 					<string>(?x)
-  (?&lt;!\?|\?\s)(?=(
+  (?&lt;!\?)(?&lt;!\?\s)(?=(
     ((')((?:[^']|\\')*)('))|
     ((")((?:[^"]|\\")*)("))
   )\s*:)</string>
@@ -1462,8 +1381,9 @@
 				<dict>
 					<key>begin</key>
 					<string>(?x)
-  \b(?:(static)\s+)?
-  ([_$a-zA-Z][$\w]*)\s*
+  (?:\b(static)\s+)?
+  (?:\b(async)\s+)?
+  (?:(\*)\s*)?([_$a-zA-Z][$\w]*)\s*
   (?=\([^())]*\)(?:\s|/\*.*\*/)*\{)</string>
 					<key>beginCaptures</key>
 					<dict>
@@ -1473,6 +1393,16 @@
 							<string>storage.type.js</string>
 						</dict>
 						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.js</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.generator.asterisk.js</string>
+						</dict>
+						<key>4</key>
 						<dict>
 							<key>name</key>
 							<string>entity.name.method.js</string>
@@ -1631,7 +1561,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>(?&lt;!\.)\b(import|export|from|as)\b</string>
+					<string>(?&lt;!\.)\b(import|export|default|from|as)\b</string>
 					<key>name</key>
 					<string>keyword.operator.module.js</string>
 				</dict>
@@ -1675,6 +1605,115 @@
 				</dict>
 			</array>
 		</dict>
+		<key>literal-operators</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\b(await|delete|in|instanceof|new|of|typeof|void|with)\b</string>
+					<key>name</key>
+					<string>keyword.operator.js</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?x)
+  !(?!=)| # logical-not     right-to-left   right
+  &amp;&amp;    | # logical-and     left-to-right   both
+  \|\|  | # logical-or      left-to-right   both</string>
+					<key>name</key>
+					<string>keyword.operator.logical.js</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?x)
+  =(?!=)| # assignment      right-to-left   both</string>
+					<key>name</key>
+					<string>keyword.operator.assignment.js</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?x)
+  %=   | # assignment      right-to-left   both
+  &amp;=   | # assignment      right-to-left   both
+  \*=  | # assignment      right-to-left   both
+  \+=  | # assignment      right-to-left   both
+  -=   | # assignment      right-to-left   both
+  /=   | # assignment      right-to-left   both
+  \^=  | # assignment      right-to-left   both
+  \|=  | # assignment      right-to-left   both
+  &lt;&lt;=  | # assignment      right-to-left   both
+  &gt;&gt;=  | # assignment      right-to-left   both
+  &gt;&gt;&gt;= | # assignment      right-to-left   both</string>
+					<key>name</key>
+					<string>keyword.operator.assignment.augmented.js</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?x)
+  ~    | # bitwise-not     right-to-left   right
+  &lt;&lt;   | # bitwise-shift   left-to-right   both
+  &gt;&gt;&gt;  | # bitwise-shift   left-to-right   both
+  &gt;&gt;   | # bitwise-shift   left-to-right   both
+  &amp;    | # bitwise-and     left-to-right   both
+  \^   | # bitwise-xor     left-to-right   both
+  \|     # bitwise-or      left-to-right   both</string>
+					<key>name</key>
+					<string>keyword.operator.bitwise.js</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?x)
+  &lt;=   | # relational      left-to-right   both
+  &gt;=   | # relational      left-to-right   both
+  &lt;    | # relational      left-to-right   both
+  &gt;      # relational      left-to-right   both</string>
+					<key>name</key>
+					<string>keyword.operator.relational.js</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?x)
+  ===  | # equality        left-to-right   both
+  !==  | # equality        left-to-right   both
+  ==   | # equality        left-to-right   both
+  !=     # equality        left-to-right   both</string>
+					<key>name</key>
+					<string>keyword.operator.comparison.js</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?x)
+  --   | # decrement       n/a             right-or-left
+  \+\+ | # increment       n/a             right-or-left
+  /    | # division        left-to-right   both
+  %    | # modulus         left-to-right   both
+  \*   | # multiplication  left-to-right   both
+  \+   | # addition        left-to-right   both
+  -      # subtraction     left-to-right   both</string>
+					<key>name</key>
+					<string>keyword.operator.arithmetic.js</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\?|:</string>
+					<key>name</key>
+					<string>keyword.operator.ternary.js</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\.\.\.</string>
+					<key>name</key>
+					<string>keyword.operator.spread.js</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\.</string>
+					<key>name</key>
+					<string>keyword.operator.accessor.js</string>
+				</dict>
+			</array>
+		</dict>
 		<key>literal-prototype-storage</key>
 		<dict>
 			<key>patterns</key>
@@ -1694,9 +1733,9 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>([_$a-zA-Z][$\w]*)\.(prototype)\s*=\s*</string>
+					<string>([_$a-zA-Z][$\w]*)\.(prototype)\b</string>
 					<key>name</key>
-					<string>meta.prototype.declaration.js</string>
+					<string>meta.prototype.access.js</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -1713,9 +1752,9 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>([_$a-zA-Z][$\w]*)\.(prototype)\b</string>
+					<string>([_$a-zA-Z][$\w]*)\.(prototype)\s*=\s*</string>
 					<key>name</key>
-					<string>meta.prototype.access.js</string>
+					<string>meta.prototype.declaration.js</string>
 				</dict>
 			</array>
 		</dict>
@@ -1733,13 +1772,7 @@
 					<key>match</key>
 					<string>,</string>
 					<key>name</key>
-					<string>meta.delimiter.object.comma.js</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\.</string>
-					<key>name</key>
-					<string>meta.delimiter.method.period.js</string>
+					<string>meta.delimiter.comma.js</string>
 				</dict>
 			</array>
 		</dict>
@@ -1804,7 +1837,7 @@
 							<array>
 								<dict>
 									<key>include</key>
-									<string>$self</string>
+									<string>#expression</string>
 								</dict>
 							</array>
 						</dict>
@@ -1812,18 +1845,18 @@
 				</dict>
 			</array>
 		</dict>
-		<key>literal-regex</key>
+		<key>literal-regexp</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
 					<string>(?x)
-  (?:(?&lt;=
+  (?&lt;=
     \.|\(|,|{|}|\[|;|,|&lt;|&gt;|&lt;=|&gt;=|==|!=|===|!==|\+|-|\*|%|\+\+|--|&lt;&lt;|&gt;&gt;|&gt;&gt;&gt;|&amp;|\||\^|!|~|&amp;&amp;|\|\||\?|:|=|\+=|-=|\*=|%=|&lt;&lt;=|&gt;&gt;=|&gt;&gt;&gt;=|&amp;=|\|=|\^=|/|/=|
     \Wnew|\Wdelete|\Wvoid|\Wtypeof|\Winstanceof|\Win|\Wdo|\Wreturn|\Wcase|\Wthrow|
-    ^new|^delete|^void|^typeof|^instanceof|^in|^do|^return|^case|^throw
-  )|^)\s*
+    ^new|^delete|^void|^typeof|^instanceof|^in|^do|^return|^case|^throw|^
+  )\s*
   (/)
   (?!/|\*|$)</string>
 					<key>beginCaptures</key>
@@ -1949,19 +1982,106 @@
 				</dict>
 			</array>
 		</dict>
+		<key>literal-switch</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;!\.)\b(switch)\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.switch.js</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.brace.curly.js</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.switch.js</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#round-brackets</string>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>\{</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>meta.brace.curly.js</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=})</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>begin</key>
+									<string>(?&lt;!\.)\b(case|default)\b</string>
+									<key>beginCaptures</key>
+									<dict>
+										<key>1</key>
+										<dict>
+											<key>name</key>
+											<string>keyword.control.switch.js</string>
+										</dict>
+									</dict>
+									<key>end</key>
+									<string>(?=:)</string>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#expression</string>
+										</dict>
+									</array>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>$self</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
 		<key>literal-variable</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\.?[A-Z][_$\dA-Z]*\b</string>
+					<string>[A-Z][_$\dA-Z]*\b</string>
 					<key>name</key>
 					<string>variable.other.constant.js</string>
 				</dict>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.dollar.js</string>
+						</dict>
+					</dict>
 					<key>match</key>
-					<string>\$[$\w]+</string>
+					<string>(\$)[$\w]+</string>
 					<key>name</key>
 					<string>variable.other.dollar.js</string>
 				</dict>
@@ -2019,6 +2139,43 @@
 					<string>[_$a-zA-Z][$\w]*</string>
 					<key>name</key>
 					<string>variable.other.readwrite.js</string>
+				</dict>
+			</array>
+		</dict>
+		<key>round-brackets</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>\(</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.brace.round.js</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.brace.round.js</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.group.braces.round</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#expression</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
@@ -2098,6 +2255,43 @@
 				</dict>
 			</array>
 		</dict>
+		<key>square-brackets</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>\[</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.brace.square.js</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\]</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.brace.square.js</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.group.braces.square</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#expression</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
 		<key>string-content</key>
 		<dict>
 			<key>patterns</key>
@@ -2168,16 +2362,26 @@
 					<string>support.constant.dom.js</string>
 				</dict>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.type.object.console.js</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.accessor.js</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.console.js</string>
+						</dict>
+					</dict>
 					<key>match</key>
-					<string>(?&lt;!\.)\b(console)\b</string>
-					<key>name</key>
-					<string>support.type.object.firebug.js</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\.(warn|info|log|error|time|timeEnd|assert)\b</string>
-					<key>name</key>
-					<string>support.function.firebug.js</string>
+					<string>(?&lt;!\.)\b(console)(?:(\.)(warn|info|log|error|time|timeEnd|assert))?\b</string>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -2186,8 +2390,74 @@
 					<string>support.module.node.js</string>
 				</dict>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.type.object.process.js</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.accessor.js</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>support.type.object.process.js</string>
+						</dict>
+					</dict>
 					<key>match</key>
-					<string>(?&lt;!\.)\b(process|process\.(env|stdout|stdin|stderr)|global|GLOBAL|root|module|exports|__dirname|__filename|console)\b</string>
+					<string>(?&lt;!\.)\b(process)(?:(\.)(stdout|stderr|stdin|argv|execPath|execArgv|env|exitCode|version|versions|config|pid|title|arch|platform|mainModule))?\b</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.type.object.process.js</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.accessor.js</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.process.js</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\b(process)(?:(\.)(abort|chdir|cwd|exit|getgid|setgid|getuid|setuid|setgroups|getgroups|initgroups|kill|memoryUsage|nextTick|umask|uptime|hrtime))?\b</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.type.object.module.js</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.accessor.js</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>support.type.object.module.js</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\b(exports|module(?:(\.)(exports|id|filename|loaded|parent|children)))?\b</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\b(global|GLOBAL|root|__dirname|__filename)\b</string>
 					<key>name</key>
 					<string>support.type.object.node.js</string>
 				</dict>

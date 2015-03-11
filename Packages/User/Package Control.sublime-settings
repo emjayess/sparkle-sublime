@@ -5,6 +5,7 @@
 	"cache_length": 3600,
 	"in_process_packages":
 	[
+		"Require CommonJS Modules Helper"
 	],
 	"installed_packages":
 	[
@@ -39,7 +40,7 @@
 		"Phpcs",
 		"PhpDoc",
 		"PHPUnit",
-		"Require Node.js Modules Helper",
+		"Require CommonJS Modules Helper",
 		"Sass",
 		"SFTP",
 		"SideBarEnhancements",

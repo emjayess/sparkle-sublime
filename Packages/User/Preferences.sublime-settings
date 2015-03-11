@@ -18,15 +18,16 @@
 	"ignored_packages":
 	[
 		"PhpDoc",
+		"Require CommonJS Modules Helper",
 		"SublimeCodeIntel",
 		"Vintage",
 		"Phpcs",
 		"SmartMarkdown",
-		"SyncedSideBar",
+		"Live CSS",
 		"sublime-github",
 		"PHPUnit",
 		"Require Node.js Modules Helper",
-		"Live CSS"
+		"SyncedSideBar"
 	],
 	"line_padding_bottom": 1,
 	"line_padding_top": 1,

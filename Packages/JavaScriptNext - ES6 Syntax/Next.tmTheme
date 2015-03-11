@@ -1051,9 +1051,9 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>meta.delimiter.object.comma.js</string>
+			<string>meta.delimiter.comma.js</string>
 			<key>scope</key>
-			<string>meta.delimiter.object.comma.js</string>
+			<string>meta.delimiter.comma.js</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
