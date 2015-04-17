@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>comment</key>
-	<string>jQuery Javascript Library. Sublime Text 2 package forked by Zander Martineau from original Textmate bundle by Jonathan Chaffer &amp; Karl Swedberg. Dual licensed under MIT (http://www.opensource.org/licenses/mit-license.php) and GPL (http://www.gnu.org/licenses/gpl.html) licenses.</string>
+	<string>jQuery Javascript Library. Sublime Text package forked by Zander Martineau from original Textmate bundle by Jonathan Chaffer &amp; Karl Swedberg. Dual licensed under MIT (http://www.opensource.org/licenses/mit-license.php) and GPL (http://www.gnu.org/licenses/gpl.html) licenses.</string>
 	<key>fileTypes</key>
     <array>
        <string>js</string>
@@ -116,7 +116,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>source.js</string>
+					<string>source.js.dom</string>
 				</dict>
 			</array>
 		</dict>
@@ -214,7 +214,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>source.js</string>
+					<string>source.js.dom</string>
 				</dict>
 			</array>
 		</dict>
@@ -308,7 +308,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>source.js</string>
+					<string>source.js.dom</string>
 				</dict>
 			</array>
 		</dict>
@@ -402,7 +402,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>source.js</string>
+					<string>source.js.dom</string>
 				</dict>
 			</array>
 		</dict>
@@ -458,7 +458,7 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>source.js</string>
+			<string>source.js.dom</string>
 		</dict>
 	</array>
 	<key>repository</key>
@@ -587,13 +587,13 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>source.js</string>
+					<string>source.js.dom</string>
 				</dict>
 			</array>
 		</dict>
 	</dict>
 	<key>scopeName</key>
-	<string>source.js.jquery</string>
+	<string>source.js.dom.jquery</string>
 	<key>uuid</key>
 	<string>1AD8EB10-62BE-417C-BC4B-29B5C6F0B36A</string>
 </dict>
