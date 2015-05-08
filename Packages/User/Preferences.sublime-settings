@@ -17,14 +17,12 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
-		"SyncedSideBar",
 		"PhpDoc",
-		"MarkdownEditing",
 		"SublimeCodeIntel",
 		"Vintage",
 		"Phpcs",
 		"SmartMarkdown",
-		"JavaScriptNext - ES6 Syntax",
+		"SyncedSideBar",
 		"sublime-github",
 		"PHPUnit",
 		"Require Node.js Modules Helper",
