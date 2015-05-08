@@ -5,6 +5,8 @@
 	"cache_length": 3600,
 	"in_process_packages":
 	[
+		"JavaScriptNext - ES6 Syntax",
+		"MarkdownEditing"
 	],
 	"installed_packages":
 	[
