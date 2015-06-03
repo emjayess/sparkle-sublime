@@ -1,1 +1,1 @@
-{"url": "https://github.com/robballou/sublimetext-sshconfig", "version": "2014.02.03.20.50.55", "description": "SSH Config language and completions"}
+{"description": "SSH Config language and completions", "url": "https://github.com/robballou/sublimetext-sshconfig", "platforms": ["*"], "version": "2015.06.02.15.07.56", "sublime_text": "*", "dependencies": []}
