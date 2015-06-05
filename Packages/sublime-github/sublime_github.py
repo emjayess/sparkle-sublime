@@ -14,6 +14,8 @@ try:
 except ImportError:
     expat = None
 
+VERSION = 118
+
 try:
     sys.path.append(os.path.join(sublime.packages_path(), 'Git'))
     import git
@@ -31,7 +33,7 @@ class BaseGitHubCommand(sublime_plugin.TextCommand):
     """
     MSG_USERNAME = "GitHub username:"
     MSG_PASSWORD = "GitHub password:"
-    MSG_ONE_TIME_PASSWORD = "One-time passowrd (for 2FA):"
+    MSG_ONE_TIME_PASSWORD = "One-time password (for 2FA):"
     MSG_TOKEN_SUCCESS = "Your access token has been saved. We'll now resume your command."
     ERR_NO_USER_TOKEN = "Your GitHub Gist access token needs to be configured.\n\n"\
         "Click OK and then enter your GitHub username and password below (neither will "\
@@ -439,7 +441,11 @@ if git:
             # get current branch
             current_branch = result.strip()
             # get file path within repo
-            relative_path = self.view.file_name().split(self.toplevel_path, 1).pop()
+            absolute_path = self.view.file_name()
+            # self.view.file_name() contains backslash on Windows instead of forwardslash
+            absolute_path = absolute_path.replace('\\', '/')
+            # we case-insensitive split because Windows
+            relative_path = re.split(re.escape(self.toplevel_path), absolute_path, re.IGNORECASE).pop()
 
             line_nums = ""
             if self.allows_line_highlights:
