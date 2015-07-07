@@ -5,11 +5,11 @@ import functools
 import os
 import re
 import subprocess
-import time
 import sublime
 import sublime_plugin
 import threading
 import sys
+
 
 class Prefs:
     @staticmethod
@@ -18,12 +18,15 @@ class Prefs:
         Prefs.folder_search_hints = settings.get('top_folder_hints', [])
         Prefs.folder_exclusions = settings.get('folder_exclusions', [])
         Prefs.max_search_secs = settings.get('max_search_secs', 2)
+        Prefs.phpunit_xml_aliases = settings.get('phpunit_xml_aliases', ["phpunit.xml", "phpunit.xml.dist"])
         Prefs.phpunit_xml_location_hints = settings.get('phpunit_xml_location_hints', [])
         Prefs.phpunit_additional_args = settings.get('phpunit_additional_args', {})
         Prefs.debug = settings.get('debug', 0)
         Prefs.path_to_phpunit = settings.get('path_to_phpunit', False)
         Prefs.copy_env = settings.get('copy_env', True)
         Prefs.override_env = settings.get('override_env', {})
+        Prefs.run_on_save = settings.get('run_on_save', False)
+        Prefs.context_menu = settings.get('context_menu', True)
 
         # which version of ST are we working inside?
         if sys.version_info[0] == 2:
@@ -103,7 +106,6 @@ class AsyncProcess(object):
             threading.Thread(target=self.read_stdout).start()
         if self.proc.stderr:
             threading.Thread(target=self.read_stderr).start()
-
 
     def read_stdout(self):
         while True:
@@ -242,11 +244,18 @@ class CommandBase:
 
 
 class PhpunitCommand(CommandBase):
-    def run(self, configfile, testfile='', classname=''):
+    def run(self, folder, configfile, testfile='', classname=''):
         self.show_empty_output()
+
+        # if os.path.isdir(configfile):
+        #     folder = configfile
+        # else:
+        #     folder = os.path.dirname(configfile)
 
         if Prefs.path_to_phpunit is not False:
             args = [Prefs.path_to_phpunit]
+        elif os.path.isfile(folder + "/vendor/bin/phpunit"):
+            args = ["vendor/bin/phpunit"]
         else:
             # find where PHPUnit is installed
             args = ["phpunit"]
@@ -258,20 +267,28 @@ class PhpunitCommand(CommandBase):
                 arg += "=" + value
             args.append(arg)
 
-        if os.path.isfile(configfile) > 0:
+        # remove the folder from the configfile
+        if configfile.startswith(folder):
+            configfile = configfile[len(folder):]
+            if configfile[0] == "/":
+                configfile = configfile[1:]
+
+        # remove the folder from the testfile
+        if testfile.startswith(folder):
+            testfile = testfile[len(folder):]
+            if testfile[0] == "/":
+                testfile = testfile[1:]
+
+        if os.path.isfile(os.path.join(folder, configfile)):
             args.append("-c")
-            args.append(os.path.basename(configfile))
+            args.append(configfile)
         if classname != '':
             args.append(classname)
         if testfile != '':
             args.append(testfile)
 
-        if os.path.isdir(configfile):
-            folder = configfile
-        else:
-            folder = os.path.dirname(configfile)
-
         self.append_data("# Running in folder: " + folder + "\n")
+        self.append_data("# Configfile is: " + configfile + "\n")
         self.append_data("$ " + ' '.join(args) + "\n")
         self.start_async("Running PHPUnit", args, folder)
 
@@ -468,8 +485,14 @@ class ProjectFiles:
         # we're going to build up a cache of the files inside this project
         i = 0
         for root, dirs, files in os.walk(path):
+            # skip over sub-folders that we do not want to visit
+            for dirname in dirs:
+                if dirname in Prefs.folder_exclusions:
+                    dirs.remove(dirname)
+            # add the files that we have
             for name in files:
                 ProjectFiles.files[path].append(os.path.join(root, name))
+                # Msgs.debug_msg("  -- found file " + os.path.join(root, name))
                 i = i + 1
 
         end = datetime.datetime.now()
@@ -495,6 +518,8 @@ class ProjectFiles:
 
     @staticmethod
     def expired(when):
+        if when is None:
+            return True
         if when < ProjectFiles.last_built_time:
             return True
         return False
@@ -534,7 +559,7 @@ class ActiveFile:
             Msgs.debug_msg("Buffer is not phpunit.xml; is not a real file")
             return False
         filename = os.path.basename(filename)
-        if filename == 'phpunit.xml' or filename == 'phpunit.xml.dist':
+        if filename in Prefs.phpunit_xml_aliases:
             Msgs.debug_msg("Buffer is a phpunit.xml file")
             return True
         Msgs.debug_msg("Buffer is not a phpunit.xml file")
@@ -556,9 +581,10 @@ class ActiveFile:
 
     def findPhpunitXml(self, search_from):
         Msgs.debug_msg("Looking for phpunit.xml of some kind")
+        Msgs.debug_msg("Project's top folder is: " + self.top_folder())
 
         # what are we looking for?
-        files_to_find = ['phpunit.xml', 'phpunit.xml.dist']
+        files_to_find = Prefs.phpunit_xml_aliases
 
         return FindFiles.find(self.top_folder(), search_from, files_to_find)
 
@@ -611,10 +637,14 @@ class ActiveView(ActiveFile):
         return self.view.file_name()
 
     def top_folder(self):
+        # have we done this before?
+        if hasattr(self, 'top_folder_path'):
+            return self.top_folder_path
+
         folders = self.view.window().folders()
         path = os.path.dirname(self.file_name())
         oldpath = ''
-        while not path in folders and path != oldpath:
+        while not path in folders and path != oldpath and not self.top_level_folder_hints(path):
             oldpath = path
             path = os.path.dirname(path)
         if path == oldpath:
@@ -625,7 +655,15 @@ class ActiveView(ActiveFile):
                 oldpath = path
                 path = os.path.dirname(path)
         Msgs.debug_msg("Top folder for this project is: " + path)
+        self.top_folder_path = path
         return path
+
+    def top_level_folder_hints(self, folder):
+        hints = Prefs.folder_search_hints
+        for hint in hints:
+            if os.path.exists(os.path.join(folder, hint)):
+                return True
+        return False
 
     def find_tested_file(self):
         Msgs.debug_msg("Looking for tested file")
@@ -657,9 +695,11 @@ class ActiveView(ActiveFile):
     def find_test_file(self):
         Msgs.debug_msg("Looking for test file")
         classname = self.determine_full_class_name()
-        Msgs.debug_msg("classname is: " + classname)
         if classname is None:
+            Msgs.debug_msg("I don't know what the classname is :(")
             return None
+
+        Msgs.debug_msg("classname is: " + classname)
 
         classname = classname + 'Test'
         filename = classname + '.php'
@@ -766,7 +806,7 @@ class PhpunitRunTestsCommand(PhpunitTextBase):
         Msgs.operation = "PhpunitRunTestsClassCommand.run"
 
         cmd = PhpunitCommand(self.view.window(), edit)
-        cmd.run(self.path_to_config, self.file_to_test)
+        cmd.run(self.top_folder(), self.path_to_config, self.file_to_test)
 
         return None
 
@@ -793,12 +833,10 @@ class PhpunitRunTestsCommand(PhpunitTextBase):
 
         if self.is_test_buffer() or self.is_tests_buffer():
             test_file_to_open = [self.view.file_name()]
-            tested_file_to_open = self.find_tested_file()
         else:
             test_file_to_open = self.find_test_file()
-            tested_file_to_open = [self.view.file_name()]
 
-        if test_file_to_open is None and tested_file_to_open is None:
+        if test_file_to_open is None:
             return False
 
         self.file_to_test = test_file_to_open[0]
@@ -808,6 +846,10 @@ class PhpunitRunTestsCommand(PhpunitTextBase):
         return True
 
     def is_visible(self):
+        # has the user switched off context-menu support?
+        if not Prefs.context_menu:
+            return False
+
         if self.needs_enabling():
             self.is_enabled()
 
@@ -855,6 +897,10 @@ class PhpunitOpenTestClassCommand(PhpunitTextBase):
         return True
 
     def is_visible(self):
+        # has the user switched off context-menu support?
+        if not Prefs.context_menu:
+            return False
+
         if self.needs_enabling():
             self.is_enabled()
 
@@ -904,6 +950,10 @@ class PhpunitOpenClassBeingTestedCommand(PhpunitTextBase):
         return True
 
     def is_visible(self):
+        # has the user switched off context-menu support?
+        if not Prefs.context_menu:
+            return False
+
         if self.needs_enabling():
             self.is_enabled()
 
@@ -951,6 +1001,10 @@ class PhpunitToggleClassTestClassCommand(PhpunitTextBase):
         return True
 
     def is_visible(self):
+        # has the user switched off context-menu support?
+        if not Prefs.context_menu:
+            return False
+
         if self.needs_enabling():
             self.is_enabled()
 
@@ -982,6 +1036,10 @@ class PhpunitOpenPhpunitXmlCommand(PhpunitTextBase):
         return 'Open phpunit.xml'
 
     def is_visible(self):
+        # has the user switched off context-menu support?
+        if not Prefs.context_menu:
+            return False
+
         if self.needs_enabling():
             self.is_enabled()
 
@@ -1026,7 +1084,7 @@ class PhpunitRunThisPhpunitXmlCommand(PhpunitTextBase):
         Msgs.operation = "PhpunitRunThisPhpunitXmlCommand.run"
         phpunit_xml_file = self.file_name()
         cmd = PhpunitCommand(self.view.window(), edit)
-        cmd.run(phpunit_xml_file)
+        cmd.run(self.top_folder(), phpunit_xml_file)
 
     def is_enabled(self):
         Msgs.operation = "PhpunitRunThisPhpunitXmlCommand.is_enabled"
@@ -1038,6 +1096,10 @@ class PhpunitRunThisPhpunitXmlCommand(PhpunitTextBase):
         return self.is_phpunitxml()
 
     def is_visible(self):
+        # has the user switched off context-menu support?
+        if not Prefs.context_menu:
+            return False
+
         if self.needs_enabling():
             self.is_enabled()
 
@@ -1059,7 +1121,7 @@ class PhpunitRunAllTestsCommand(PhpunitTextBase):
         self.edit = edit
         Msgs.operation = "PhpunitRunAllTestsCommand.run"
         cmd = PhpunitCommand(self.view.window(), edit)
-        cmd.run(self.path_to_config)
+        cmd.run(self.top_folder(), self.path_to_config)
 
     def description(self):
         return 'Run All Unit Tests...'
@@ -1092,6 +1154,10 @@ class PhpunitRunAllTestsCommand(PhpunitTextBase):
         return True
 
     def is_visible(self):
+        # has the user switched off context-menu support?
+        if not Prefs.context_menu:
+            return False
+
         if self.needs_enabling():
             self.is_enabled()
 
@@ -1107,6 +1173,10 @@ class PhpunitNotAvailableCommand(PhpunitTextBase):
     def is_visible(self):
         Msgs.operation = "PhpunitNotAvailableCommand.is_visible"
         Msgs.debug_msg('called')
+
+        # has the user switched off context-menu support?
+        if not Prefs.context_menu:
+            return False
 
         if not self.has_project_open():
             return True
@@ -1133,6 +1203,28 @@ class PhpunitNotAvailableCommand(PhpunitTextBase):
         return self.cannot_find_xml()
 
 
+class PhpunitContextMenuDisabledCommand(PhpunitTextBase):
+    def is_visible(self):
+        Msgs.operation = "PhpunitContextMenuDisabledCommand.is_visible"
+        Msgs.debug_msg('called')
+
+        if not Prefs.context_menu:
+            return True
+        return False
+
+    def is_enabled(self):
+        Msgs.operation = "PhpunitContextMenuDisabledCommand.is_enabled"
+        Msgs.debug_msg('called')
+
+        return False
+
+    def description(self):
+        Msgs.operation = "PhpunitContextMenuDisabledCommand.description"
+        Msgs.debug_msg('called')
+
+        return "Context menu has been disabled in prefs file"
+
+
 class PhpunitFlushCacheCommand(PhpunitTextBase):
     def is_enabled(self):
         Msgs.operation = "PhpunitFlushCacheCommand.is_enabled"
@@ -1152,6 +1244,10 @@ class PhpunitFlushCacheCommand(PhpunitTextBase):
         return False
 
     def is_visible(self):
+        # has the user switched off context-menu support?
+        if not Prefs.context_menu:
+            return False
+
         if self.needs_enabling():
             self.is_enabled()
 
@@ -1174,7 +1270,7 @@ class RunPhpunitOnXmlCommand(PhpunitWindowBase):
         self.determine_filename(paths)
         filename = self.file_name()
         cmd = PhpunitCommand(self.window)
-        cmd.run(filename)
+        cmd.run(self.top_folder(), filename)
 
     def is_enabled(self, paths=[]):
         Msgs.operation = "RunPhpunitOnXmlCommand.is_enabled"
@@ -1191,3 +1287,54 @@ class RunPhpunitOnXmlCommand(PhpunitWindowBase):
 
     def description(self, paths=[]):
         return 'Run PHPUnit Using This XML File...'
+
+
+class ActiveEvent(ActiveView):
+    def __init__(self, view):
+        self.view = view
+
+
+class RunPhpunitOnSave(sublime_plugin.EventListener):
+    def on_post_save(self, view):
+        Msgs.debug_msg("on_post_save() called")
+        # has the user switched this feature on?
+        if not Prefs.run_on_save:
+            return
+        # has a viable buffer just been saved?
+        e = ActiveEvent(view)
+        if not self.is_enabled(e):
+            return
+        self.run(e)
+
+    def run(self, e):
+        Msgs.operation = "PhpunitRunTestsClassCommand.run"
+
+        cmd = PhpunitCommand(e.view.window(), None)
+        cmd.run(self.top_folder(), self.path_to_config, self.file_to_test)
+
+        return None
+
+    def is_enabled(self, e):
+        self.file_to_test = None
+        self.path_to_config = None
+
+        if not e.has_project_open():
+            return False
+        if not e.is_php_buffer():
+            return False
+
+        if e.is_test_buffer() or e.is_tests_buffer():
+            test_file_to_open = [e.view.file_name()]
+            tested_file_to_open = e.find_tested_file()
+        else:
+            test_file_to_open = e.find_test_file()
+            tested_file_to_open = [e.view.file_name()]
+
+        if test_file_to_open is None and tested_file_to_open is None:
+            return False
+
+        self.file_to_test = test_file_to_open[0]
+        self.path_to_config = e.findPhpunitXml(self.file_to_test)
+        if self.path_to_config is None:
+            return False
+        return True

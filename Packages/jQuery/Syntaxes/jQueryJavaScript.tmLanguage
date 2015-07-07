@@ -118,6 +118,10 @@
 					<key>include</key>
 					<string>source.js.dom</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>source.js</string>
+				</dict>
 			</array>
 		</dict>
 		<dict>
@@ -216,6 +220,10 @@
 					<key>include</key>
 					<string>source.js.dom</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>source.js</string>
+				</dict>
 			</array>
 		</dict>
 		<dict>
@@ -309,6 +317,10 @@
 				<dict>
 					<key>include</key>
 					<string>source.js.dom</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>source.js</string>
 				</dict>
 			</array>
 		</dict>
@@ -404,6 +416,10 @@
 					<key>include</key>
 					<string>source.js.dom</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>source.js</string>
+				</dict>
 			</array>
 		</dict>
 		<dict>
@@ -459,6 +475,10 @@
 		<dict>
 			<key>include</key>
 			<string>source.js.dom</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>source.js</string>
 		</dict>
 	</array>
 	<key>repository</key>
@@ -588,6 +608,10 @@
 				<dict>
 					<key>include</key>
 					<string>source.js.dom</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>source.js</string>
 				</dict>
 			</array>
 		</dict>
