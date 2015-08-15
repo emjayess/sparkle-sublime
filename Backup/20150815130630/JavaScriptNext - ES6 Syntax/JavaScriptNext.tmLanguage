@@ -1046,14 +1046,6 @@
 									<key>include</key>
 									<string>#literal-method</string>
 								</dict>
-								<dict>
-									<key>include</key>
-									<string>#literal-property-initializer</string>
-								</dict>
-								<dict>
-									<key>include</key>
-									<string>#expression</string>
-								</dict>
 							</array>
 						</dict>
 					</array>
@@ -2126,31 +2118,6 @@
 					<string>\.</string>
 					<key>name</key>
 					<string>keyword.operator.accessor.js</string>
-				</dict>
-			</array>
-		</dict>
-		<key>literal-property-initializer</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.js</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>variable.class.property.js</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>\b(?:(static)\s+)?([_$a-zA-Z][$\w]*)\s*=</string>
-					<key>name</key>
-					<string>meta.class.property.js</string>
 				</dict>
 			</array>
 		</dict>

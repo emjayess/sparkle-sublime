@@ -209,8 +209,6 @@ repository:
         - include: '#brackets'
         - include: '#comments'
         - include: '#literal-method'
-        - include: '#literal-property-initializer'
-        - include: '#expression'
 
   literal-method:
     patterns:
@@ -246,14 +244,6 @@ repository:
       end: (?<=\))
       patterns:
       - include: '#function-declaration-parameters'
-
-  literal-property-initializer:
-    patterns:
-    - name: meta.class.property.js
-      match: \b(?:(static)\s+)?([_$a-zA-Z][$\w]*)\s*=
-      captures:
-        '1': {name: storage.type.js}
-        '2': {name: variable.class.property.js}
 
   literal-prototype:
     patterns:
