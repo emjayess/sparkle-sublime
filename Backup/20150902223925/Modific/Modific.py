@@ -360,21 +360,20 @@ class DiffCommand(VcsCommand):
         vcs_options = self.settings.get('vcs_options', {}).get('tf') or ['-format:unified']
         return [get_user_command('tf') or 'tf', 'diff'] + vcs_options + [file_name]
 
-    def get_line_ending(self):
-        le = self.view.line_endings().lower()
-
-        if le == 'windows':
-            return "\r\n"
-        elif le == 'unix':
-            return "\n"
-        else:
-            return os.linesep
-
     def join_lines(self, lines):
         """
         Join lines using os.linesep.join(), unless another method is specified in ST settings
         """
-        return self.get_line_ending().join(lines)
+        le = self.view.settings().get('default_line_ending')
+        if self.settings.get('debug'):
+            print("use line endings:", le)
+
+        if le == 'windows':
+            return "\r\n".join(lines)
+        elif le == 'unix':
+            return "\n".join(lines)
+
+        return os.linesep.join(lines)
 
 
 class ShowDiffCommand(DiffCommand, sublime_plugin.TextCommand):
@@ -384,7 +383,6 @@ class ShowDiffCommand(DiffCommand, sublime_plugin.TextCommand):
         if not result.strip():
             return
 
-        result = result.replace('\r\n', '\n')
         file_name = re.findall(r'([^\\\/]+)$', self.view.file_name())
         self.scratch(result, title="Diff - " + file_name[0])
 
@@ -577,8 +575,7 @@ class ReplaceModifiedPartCommand(DiffCommand, sublime_plugin.TextCommand):
                     region = self.view.full_line(region)
                     self.view.run_command('edit_view', dict(command='erase', region=[region.begin(), region.end()]))
             else:
-                self.view.run_command('edit_view', dict(command='insert', begin=begin,
-                                                        output=content + self.get_line_ending()))
+                self.view.run_command('edit_view', dict(command='insert', begin=begin, output=content + os.linesep))
             self.view.run_command('save')
 
 
@@ -758,10 +755,8 @@ class UncommittedFilesCommand(VcsCommand, sublime_plugin.WindowCommand):
 
     def status_done(self, result):
         filter_status = getattr(self, '{0}_filter_status'.format(self.vcs['name']), None)
-
-        self.results = [item.replace('\r', '') for item in filter_status(result)]
-
-        if self.results:
+        self.results = filter_status(result)
+        if len(self.results):
             self.show_status_list()
         else:
             sublime.status_message("Nothing to show")

@@ -17,18 +17,16 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
+		"Live CSS",
 		"PhpDoc",
 		"SublimeCodeIntel",
 		"Vintage",
 		"Phpcs",
-		"SmartMarkdown",
-		"SyncedSideBar",
 		"sublime-github",
+		"SmartMarkdown",
 		"PHPUnit",
 		"Require Node.js Modules Helper",
-		"Live CSS",
-		"jQuery",
-		"Modific"
+		"SyncedSideBar"
 	],
 	"line_padding_bottom": 1,
 	"line_padding_top": 1,
