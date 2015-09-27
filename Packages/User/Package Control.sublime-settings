@@ -2,6 +2,7 @@
 	"auto_upgrade": true,
 	"auto_upgrade_frequency": 12,
 	"auto_upgrade_last_run": null,
+	"bootstrapped": true,
 	"cache_length": 3600,
 	"in_process_packages":
 	[

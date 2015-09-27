@@ -13,7 +13,7 @@ from .package_manager import PackageManager
 from .open_compat import open_compat
 from .package_io import package_file_exists
 from .settings import preferences_filename, pc_settings_filename, load_list_setting, save_list_setting
-from . import loader, text
+from . import loader, text, __version__
 from .providers.release_selector import is_compatible_version
 
 
@@ -28,12 +28,29 @@ class PackageCleanup(threading.Thread):
         self.manager = PackageManager()
 
         settings = sublime.load_settings(pc_settings_filename())
+
+        # We no longer use the installed_dependencies setting because it is not
+        # necessary and created issues with settings shared across operating systems
+        if settings.get('installed_dependencies'):
+            settings.erase('installed_dependencies')
+            sublime.save_settings(pc_settings_filename())
+
         self.original_installed_packages = load_list_setting(settings, 'installed_packages')
         self.remove_orphaned = settings.get('remove_orphaned', True)
 
         threading.Thread.__init__(self)
 
     def run(self):
+        # Ensure we record the installation of Package Control itself
+        if 'Package Control' not in self.original_installed_packages:
+            params = {
+                'package': 'Package Control',
+                'operation': 'install',
+                'version': __version__
+            }
+            self.manager.record_usage(params)
+            self.original_installed_packages.append('Package Control')
+
         found_packages = []
         installed_packages = list(self.original_installed_packages)
 
