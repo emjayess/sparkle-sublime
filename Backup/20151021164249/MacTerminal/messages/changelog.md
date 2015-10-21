@@ -1,49 +1,5 @@
 # If You like this project - hit it with a star ツ
 
-# 15.10.2015 version 4.0.2
-
----
-
-1. fix Decimal error when mac_ver() is 10.10.x in [#39](https://github.com/afterdesign/MacTerminal/pull/39)
-
-Thanx to [@flyjy](https://github.com/flyjy) fot fix !
-
-ITERM BETA/NIGHTLY SUPPORT:
-Please change settings to:
-```"terminal" : "iterm-nightly"```
-
-
-IMPORTANT NOTE:
-
-If you're owerwriting directory_mode in User configuration please check it's one of those 2 values:
-- file
-- project
-
-Previous defaults were:
-- default
-- project
-
-
-# 14.10.2015 version 4.0.1
-
----
-
-1. Update to use javascript in El Capitan
-
-ITERM BETA/NIGHTLY SUPPORT:
-Please change settings to:
-```"terminal" : "iterm-nightly"```
-
-IMPORTANT NOTE:
-
-If you're owerwriting directory_mode in User configuration please check it's one of those 2 values:
-- file
-- project
-
-Previous defaults were:
-- default
-- project
-
 # 04.09.2015 version 4.0.0
 1. Another rewrite
 2. Add iTerm2 beta/nightly support (set iterm-nightly as terminal in settings)

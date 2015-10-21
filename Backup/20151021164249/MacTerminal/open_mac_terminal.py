@@ -10,7 +10,6 @@ import platform
 import subprocess
 import sublime_plugin
 from pprint import pprint
-from decimal import Decimal
 
 class PathPicker(object):
     '''
@@ -161,7 +160,7 @@ class OpenMacTerminal(sublime_plugin.TextCommand):
         # get osascript from settings or just use default value
         command.append(self.settings.get('osascript', '/usr/bin/osascript'))
 
-        if Decimal(".".join(platform.mac_ver()[0].split(".")[:2])) >= Decimal('10.10'):
+        if '10.10' in platform.mac_ver()[0]:
             ext_language = 'js'
         else:
             ext_language = 'scpt'
