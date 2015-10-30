@@ -3,7 +3,7 @@
 [
     {
         "keys": [
-            "shift+ctrl+;"
+            "super+'"
         ], 
         "args": {
             "action": "remove_tag"
@@ -31,7 +31,7 @@
     }, 
     {
         "keys": [
-            "ctrl+shift+forward_slash"
+            "alt+shift+forward_slash"
         ], 
         "args": {
             "action": "toggle_comment"
@@ -52,7 +52,7 @@
     }, 
     {
         "keys": [
-            "shift+ctrl+."
+            "shift+super+."
         ], 
         "args": {
             "action": "select_next_item"
@@ -98,7 +98,7 @@
     }, 
     {
         "keys": [
-            "ctrl+'"
+            "shift+ctrl+d"
         ], 
         "args": {
             "action": "encode_decode_data_url"
@@ -112,7 +112,7 @@
     }, 
     {
         "keys": [
-            "shift+ctrl+y"
+            "shift+super+y"
         ], 
         "args": {
             "action": "evaluate_math_expression"
@@ -126,7 +126,7 @@
     }, 
     {
         "keys": [
-            "ctrl+shift+0"
+            "ctrl+j"
         ], 
         "args": {
             "action": "balance_inward"
@@ -140,7 +140,7 @@
     }, 
     {
         "keys": [
-            "ctrl+,"
+            "ctrl+d"
         ], 
         "args": {
             "action": "balance_outward"
@@ -154,7 +154,7 @@
     }, 
     {
         "keys": [
-            "shift+alt+up"
+            "alt+super+up"
         ], 
         "args": {
             "action": "increment_number_by_10"
@@ -168,7 +168,7 @@
     }, 
     {
         "keys": [
-            "shift+ctrl+r"
+            "shift+super+r"
         ], 
         "args": {
             "action": "reflect_css_value"
@@ -196,7 +196,7 @@
     }, 
     {
         "keys": [
-            "shift+ctrl+,"
+            "shift+super+,"
         ], 
         "args": {
             "action": "select_previous_item"
@@ -210,7 +210,7 @@
     }, 
     {
         "keys": [
-            "ctrl+u"
+            "shift+ctrl+i"
         ], 
         "args": {
             "action": "update_image_size"
@@ -238,7 +238,7 @@
     }, 
     {
         "keys": [
-            "shift+ctrl+`"
+            "shift+super+'"
         ], 
         "args": {
             "action": "split_join_tag"
@@ -252,7 +252,7 @@
     }, 
     {
         "keys": [
-            "shift+alt+down"
+            "alt+super+down"
         ], 
         "args": {
             "action": "decrement_number_by_10"
@@ -266,7 +266,7 @@
     }, 
     {
         "keys": [
-            "shift+ctrl+g"
+            "ctrl+w"
         ], 
         "command": "wrap_as_you_type", 
         "context": [
@@ -284,7 +284,7 @@
     }, 
     {
         "keys": [
-            "shift+ctrl+'"
+            "super+shift+k"
         ], 
         "command": "rename_tag", 
         "context": [
@@ -327,7 +327,7 @@
     }, 
     {
         "keys": [
-            "ctrl+alt+j"
+            "ctrl+shift+t"
         ], 
         "args": {
             "action": "matching_pair"
@@ -374,7 +374,7 @@
         "command": "expand_abbreviation_by_tab", 
         "context": [
             {
-                "operand": "source.css, source.sass, source.less, source.scss, source.stylus, source.jade, text.jade, text.slim, text.xml, text.html - source, text.haml, text.scala.html, source string", 
+                "operand": "source.css, source.sass, source.less, source.scss, source.stylus, source.jade, text.slim, text.xml, text.html - source, text.haml, text.scala.html, source string", 
                 "operator": "equal", 
                 "match_all": true, 
                 "key": "selector"
@@ -420,7 +420,7 @@
         "command": "expand_abbreviation_by_tab", 
         "context": [
             {
-                "operand": "source.css, source.sass, source.less, source.scss, source.stylus, source.jade, text.jade, text.slim, text.xml, text.html - source, text.haml, text.scala.html, source string", 
+                "operand": "source.css, source.sass, source.less, source.scss, source.stylus, source.jade, text.slim, text.xml, text.html - source, text.haml, text.scala.html, source string", 
                 "operator": "equal", 
                 "match_all": true, 
                 "key": "selector"
