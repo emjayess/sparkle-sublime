@@ -974,9 +974,9 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>variable.other.quasi.js</string>
+			<string>variable.other.template-string.js</string>
 			<key>scope</key>
-			<string>variable.other.quasi.js</string>
+			<string>variable.other.template-string.js</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -985,9 +985,9 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>string.quasi.js</string>
+			<string>string.template-string.js</string>
 			<key>scope</key>
-			<string>string.quasi.js</string>
+			<string>string.template-string.js</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -996,9 +996,9 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>punctuation.quasi.element</string>
+			<string>punctuation.template-string.element</string>
 			<key>scope</key>
-			<string>punctuation.quasi.element</string>
+			<string>punctuation.template-string.element</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -1007,9 +1007,9 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>entity.quasi.tag.name.js</string>
+			<string>entity.template-string.tag.name.js</string>
 			<key>scope</key>
-			<string>entity.quasi.tag.name.js</string>
+			<string>entity.template-string.tag.name.js</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>

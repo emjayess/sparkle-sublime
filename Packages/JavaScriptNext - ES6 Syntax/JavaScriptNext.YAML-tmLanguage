@@ -32,7 +32,7 @@ repository:
 
     - include: '#literal-regexp'              # before operators to avoid ambiguities
     - include: '#literal-number'
-    - include: '#literal-quasi'
+    - include: '#literal-template-string'
     - include: '#literal-string'
     - include: '#literal-language-constant'
     - include: '#literal-language-variable'
@@ -746,12 +746,21 @@ repository:
       begin: (new)\s+(?=[_$a-zA-Z][$\w.]*)
       beginCaptures:
         '1': {name: keyword.operator.new.js}
-      end: (?![_$a-zA-Z][$\w.]*)
+      end: (?![_$a-zA-Z.])
       patterns:
       - include: '#support'
-      - match: ([_$a-zA-Z][$\w.]*\.)?([_$a-zA-Z][$\w]*)
+      - include: '#literal-language-variable'
+
+      - name: keyword.operator.accessor.js
+        match: \.
+
+      - name: entity.name.type.new.js
+        match: (?<=\.)\s*[_$a-zA-Z][$\w]*(?=\s*\()
+
+      - name: meta.property.object.js
+        match: (?<=\.)\s*[_$a-zA-Z][$\w]*
         captures:
-          '2': {name: entity.name.type.new.js}
+          '2': {name: variable.other.property.js}
 
   literal-keyword-storage:
     patterns:
@@ -954,25 +963,25 @@ repository:
     - name: meta.delimiter.comma.js
       match: ','
 
-  literal-quasi:
+  literal-template-string:
     patterns:
-    - name: string.quasi.js
+    - name: string.template-string.js
       begin: ([a-zA-Z$_][\w$_]*)?(`)
       beginCaptures:
-        '1': {name: entity.quasi.tag.name.js}
-        '2': {name: punctuation.definition.quasi.begin.js}
+        '1': {name: entity.template-string.tag.name.js}
+        '2': {name: punctuation.definition.template-string.begin.js}
       end: '`'
       endCaptures:
-        '0': {name: punctuation.definition.quasi.end.js}
+        '0': {name: punctuation.definition.template-string.end.js}
       patterns:
       - include: '#string-content'
-      - name: entity.quasi.element.js
+      - name: entity.template-string.element.js
         begin: \${
         beginCaptures:
-          '0': {name: punctuation.quasi.element.begin.js}
+          '0': {name: punctuation.template-string.element.begin.js}
         end: '}'
         endCaptures:
-          '0': {name: punctuation.quasi.element.end.js}
+          '0': {name: punctuation.template-string.element.end.js}
         patterns:
         - include: '#expression'
 

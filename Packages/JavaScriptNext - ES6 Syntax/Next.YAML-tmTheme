@@ -446,23 +446,23 @@ settings:
   settings:
     foreground: '#88FFAAAA'
 
-- name: variable.other.quasi.js
-  scope: variable.other.quasi.js
+- name: variable.other.template-string.js
+  scope: variable.other.template-string.js
   settings:
     foreground: '#FF0099'
 
-- name: string.quasi.js
-  scope: string.quasi.js
+- name: string.template-string.js
+  scope: string.template-string.js
   settings:
     foreground: '#00FF00'
 
-- name: punctuation.quasi.element
-  scope: punctuation.quasi.element
+- name: punctuation.template-string.element
+  scope: punctuation.template-string.element
   settings:
     foreground: '#008800'
 
-- name: entity.quasi.tag.name.js
-  scope: entity.quasi.tag.name.js
+- name: entity.template-string.tag.name.js
+  scope: entity.template-string.tag.name.js
   settings:
     foreground: '#FFFF00'
 

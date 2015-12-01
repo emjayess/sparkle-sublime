@@ -230,7 +230,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#literal-quasi</string>
+					<string>#literal-template-string</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1076,7 +1076,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?![_$a-zA-Z][$\w.]*)</string>
+					<string>(?![_$a-zA-Z.])</string>
 					<key>name</key>
 					<string>meta.instance.constructor</string>
 					<key>patterns</key>
@@ -1086,16 +1086,34 @@
 							<string>#support</string>
 						</dict>
 						<dict>
+							<key>include</key>
+							<string>#literal-language-variable</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>\.</string>
+							<key>name</key>
+							<string>keyword.operator.accessor.js</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>(?&lt;=\.)\s*[_$a-zA-Z][$\w]*(?=\s*\()</string>
+							<key>name</key>
+							<string>entity.name.type.new.js</string>
+						</dict>
+						<dict>
 							<key>captures</key>
 							<dict>
 								<key>2</key>
 								<dict>
 									<key>name</key>
-									<string>entity.name.type.new.js</string>
+									<string>variable.other.property.js</string>
 								</dict>
 							</dict>
 							<key>match</key>
-							<string>([_$a-zA-Z][$\w.]*\.)?([_$a-zA-Z][$\w]*)</string>
+							<string>(?&lt;=\.)\s*[_$a-zA-Z][$\w]*</string>
+							<key>name</key>
+							<string>meta.property.object.js</string>
 						</dict>
 					</array>
 				</dict>
@@ -2226,7 +2244,7 @@
 				</dict>
 			</array>
 		</dict>
-		<key>literal-quasi</key>
+		<key>literal-template-string</key>
 		<dict>
 			<key>patterns</key>
 			<array>
@@ -2238,12 +2256,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>entity.quasi.tag.name.js</string>
+							<string>entity.template-string.tag.name.js</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.quasi.begin.js</string>
+							<string>punctuation.definition.template-string.begin.js</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -2253,11 +2271,11 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.quasi.end.js</string>
+							<string>punctuation.definition.template-string.end.js</string>
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>string.quasi.js</string>
+					<string>string.template-string.js</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -2272,7 +2290,7 @@
 								<key>0</key>
 								<dict>
 									<key>name</key>
-									<string>punctuation.quasi.element.begin.js</string>
+									<string>punctuation.template-string.element.begin.js</string>
 								</dict>
 							</dict>
 							<key>end</key>
@@ -2282,11 +2300,11 @@
 								<key>0</key>
 								<dict>
 									<key>name</key>
-									<string>punctuation.quasi.element.end.js</string>
+									<string>punctuation.template-string.element.end.js</string>
 								</dict>
 							</dict>
 							<key>name</key>
-							<string>entity.quasi.element.js</string>
+							<string>entity.template-string.element.js</string>
 							<key>patterns</key>
 							<array>
 								<dict>
