@@ -8,6 +8,8 @@ file_extensions:
   - nginx.conf
   - mime.types
   - fastcgi_params
+  - scgi_params
+  - uwsgi_params
 scope: source.nginx
 contexts:
   main:
@@ -241,7 +243,19 @@ contexts:
         - match: ;
           pop: true
         - include: values
-    - match: \b(map|map_hash_max_size|map_hash_bucket_size)\b
+    - match: '\b(map) +(\$[A-Za-z0-9\_]+) +(\$[A-Za-z0-9\_]+) *\{'
+      captures:
+        1: storage.type.context.nginx
+        2: variable.other.nginx
+        3: variable.other.nginx
+      push:
+        - meta_scope: meta.context.map.nginx
+        - match: '\}'
+          pop: true
+        - include: values
+        - match: ;
+          scope: punctuation.definition.map.nginx
+    - match: \b(map_hash_max_size|map_hash_bucket_size)\b
       captures:
         1: keyword.directive.module.http.map.nginx
       push:
@@ -391,7 +405,7 @@ contexts:
       scope: constant.language.nginx
     - match: '[\t ](kqueue|rtsig|epoll|\/dev\/poll|select|poll|eventport|max|all|default_server|default|main|crit|error|debug|warn|notice|last)(?=[\t ;])'
       scope: constant.language.nginx
-    - match: \\.*\ |\~|\~\*|\!\~|\!\~\*
+    - match: \\.*\ |\~\*|\~|\!\~\*|\!\~
       scope: string.regexp.nginx
     - match: \^.*?\$
       scope: string.regexp.nginx
