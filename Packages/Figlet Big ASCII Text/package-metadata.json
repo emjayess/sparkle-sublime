@@ -1,1 +1,1 @@
-{"url": "https://github.com/adamchainz/SublimeFiglet", "version": "2014.08.03.20.28.19", "description": "Add in ASCII text direct from \"figlet\""}
+{"description": ":pencil2: Add in ASCII text direct from \"figlet\"", "url": "https://github.com/adamchainz/SublimeFiglet", "platforms": ["*"], "version": "2016.03.10.13.27.13", "sublime_text": "*", "dependencies": []}

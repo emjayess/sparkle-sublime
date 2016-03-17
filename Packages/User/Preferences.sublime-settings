@@ -17,9 +17,7 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
-		"Figlet Big ASCII Text",
 		"Live CSS",
-		"MarkdownEditing",
 		"Phpcs",
 		"PhpDoc",
 		"PHPUnit",
