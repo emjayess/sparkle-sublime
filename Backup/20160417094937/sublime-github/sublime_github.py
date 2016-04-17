@@ -14,7 +14,7 @@ try:
 except ImportError:
     expat = None
 
-VERSION = "1.2.2"
+VERSION = 118
 
 try:
     sys.path.append(os.path.join(sublime.packages_path(), 'Git'))
@@ -420,20 +420,6 @@ if git:
         master = False  # operate on current branch by default
 
         def run(self, edit):
-            if self.master:
-                branch = "master"
-            else:
-                branch = ""
-            command = "git rev-parse --abbrev-ref --symbolic-full-name %s@{upstream}" % branch
-            self.run_command(command.split(), self.done_rev_parse)
-
-        def done_rev_parse(self, result):
-            if "fatal:" in result:
-                sublime.error_message(result)
-                return
-
-            remote, self.remote_branch = result.strip().split("/", 1)
-
             self.settings = sublime.load_settings("GitHub.sublime-settings")
             self.active_account = self.settings.get("active_account")
             self.accounts = self.settings.get("accounts")
@@ -442,8 +428,7 @@ if git:
                 self.active_account = list(self.accounts.keys())[0]
 
             self.protocol = self.accounts[self.active_account].get("protocol", "https")
-            # Override the remote with the user setting (if it exists)
-            remote = self.accounts[self.active_account].get("remote", remote)
+            remote = self.accounts[self.active_account].get("remote", "")
 
             command = "git ls-remote --get-url " + remote
 
@@ -462,6 +447,14 @@ if git:
         # Get the repo's explicit toplevel path
         def done_toplevel(self, result):
             self.toplevel_path = result.strip()
+            if self.master:
+                self.done_rev_parse("master")
+            else:
+                self.run_command("git rev-parse --abbrev-ref HEAD".split(), self.done_rev_parse)
+
+        def done_rev_parse(self, result):
+            # get current branch
+            current_branch = result.strip()
             # get file path within repo
             absolute_path = self.view.file_name()
             # self.view.file_name() contains backslash on Windows instead of forwardslash
@@ -476,12 +469,7 @@ if git:
                 if non_empty_regions:
                     selection = non_empty_regions[0]
                     (start_row, _) = self.view.rowcol(selection.begin())
-                    (end_row, end_col) = self.view.rowcol(selection.end())
-                    # If you select a single line (e.g., by using 'Expand selection to line'),
-                    # the selection will actually end up as two lines, ending at column 0 of
-                    # the second line. This accounts for that so that the final line is ignored.
-                    if end_col == 0:
-                        end_row -= 1
+                    (end_row, _) = self.view.rowcol(selection.end())
                     line_nums = "#L%s" % (start_row + 1)
                     if end_row > start_row:
                         line_nums += "-L%s" % (end_row + 1)
@@ -489,7 +477,7 @@ if git:
                     (current_row, _) = self.view.rowcol(self.view.sel()[0].begin())
                     line_nums = "#L%s" % (current_row + 1)
 
-            self.url = "%s/%s/%s%s%s" % (self.repo_url, self.url_type, self.remote_branch, relative_path, line_nums)
+            self.url = "%s/%s/%s%s%s" % (self.repo_url, self.url_type, current_branch, relative_path, line_nums)
             self.on_done()
 else:
     class RemoteUrlCommand(sublime_plugin.TextCommand):
