@@ -1,0 +1,5 @@
+[06/07/2016 08:55:18AM] INFO - ==== Loading 'Xdebug Client' package ====
+[06/07/2016 08:55:18AM] INFO - Failed to open /Users/emjayess/SparkleShare/sparkle-sublime/Packages/User/Xdebug.breakpoints.
+[06/07/2016 08:55:18AM] INFO - Failed to parse /Users/emjayess/SparkleShare/sparkle-sublime/Packages/User/Xdebug.breakpoints.
+[06/07/2016 08:55:18AM] INFO - Failed to open /Users/emjayess/SparkleShare/sparkle-sublime/Packages/User/Xdebug.expressions.
+[06/07/2016 08:55:18AM] INFO - Failed to parse /Users/emjayess/SparkleShare/sparkle-sublime/Packages/User/Xdebug.expressions.
