@@ -60,7 +60,7 @@ class Pref:
     def load(self):
         self.settings = sublime.load_settings('phpcs.sublime-settings')
 
-        if sublime.active_window() is not None and sublime.active_window().active_view() is not None:
+        if sublime.active_window() is not None:
             project_settings = sublime.active_window().active_view().settings()
             if project_settings.has("phpcs"):
                 project_settings.clear_on_change('phpcs')
@@ -211,10 +211,7 @@ class Sniffer(ShellCommand):
         # Add the additional arguments from the settings file to the command
         for key, value in pref.phpcs_additional_args.items():
             arg = key
-            if key == "--runtime-set":
-                args.append(arg)
-                args.append(value)
-            elif value != "":
+            if value != "":
                 arg += "=" + value
             args.append(arg)
 

@@ -1,0 +1,1 @@
+{"description": "Sublime Text 2 plugin to sync project sidebar (folder view) with currently active file.", "url": "https://github.com/sobstel/SyncedSideBar", "platforms": ["*"], "version": "2016.02.05.01.29.14", "sublime_text": "*", "dependencies": []}
