@@ -128,18 +128,14 @@ class PackageResourceViewerBase(sublime_plugin.WindowCommand):
 
     def open_file(self, package, resource):
         resource_path = os.path.join(sublime.packages_path(), package, resource)
-        view = self.find_open_file(resource_path)
-        if view:
-            self.window.focus_view(view)
-        else:
-            view = self.window.open_file(resource_path)
-            if not os.path.exists(resource_path):
-                content = get_resource(package, resource)
-                view.settings().set("buffer_empty", True)
-                sublime.set_timeout(lambda: self.insert_text(content, view), 10)
-                if self.settings.get("single_command", True):
-                    view.settings().set("create_dir", True)
-                    view.set_scratch(True)
+        view = self.window.open_file(resource_path)
+        if not os.path.exists(resource_path):
+            content = get_resource(package, resource)
+            view.settings().set("buffer_empty", True)
+            sublime.set_timeout(lambda: self.insert_text(content, view), 10)
+            if self.settings.get("single_command", True):
+                view.settings().set("create_dir", True)
+                view.set_scratch(True)
 
         return view
 
@@ -149,12 +145,6 @@ class PackageResourceViewerBase(sublime_plugin.WindowCommand):
             view.settings().set("buffer_empty", False)
         else:
             sublime.set_timeout(lambda: self.insert_text(content, view), 10)
-
-    def find_open_file(self, path):
-        view = None
-        if IS_ST3:
-            view = self.window.find_open_file(path)
-        return view
 
 
 class PackageResourceViewerCommand(PackageResourceViewerBase):
