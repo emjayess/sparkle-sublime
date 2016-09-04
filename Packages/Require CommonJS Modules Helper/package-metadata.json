@@ -1,1 +1,1 @@
-{"description": "helper to add require clauses to node.js modules in Sublime Text 2", "url": "https://github.com/jfromaniello/sublime-node-require", "platforms": ["*"], "version": "2.0.0", "sublime_text": "*", "dependencies": []}
+{"description": "helper to add require clauses to node.js modules in Sublime Text 2", "url": "https://github.com/jfromaniello/sublime-node-require", "platforms": ["*"], "version": "2.1.0", "sublime_text": "*", "dependencies": []}

@@ -12,7 +12,7 @@
 		"*.sublime-project",
 		"*.sublime-workspace"
 	],
-	"flatland_square_tabs": true,
+	"flatland_square_tabs": false,
 	"font_size": 15.0,
 	"highlight_line": true,
 	"ignored_packages":

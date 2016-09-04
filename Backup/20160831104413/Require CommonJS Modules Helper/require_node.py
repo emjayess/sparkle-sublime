@@ -30,8 +30,7 @@ class RequireNodeCommand(sublime_plugin.TextCommand):
 
             region_to_insert = self.view.sel()[0]
 
-            line = self.view.substr(self.view.lines(region_to_insert)[0])
-            line_is_empty = not line or line.isspace()
+            line_is_empty = self.view.lines(region_to_insert)[0].empty()
 
             clause_formats = {
                 "source.js": {
@@ -41,10 +40,6 @@ class RequireNodeCommand(sublime_plugin.TextCommand):
                 "source.coffee": {
                     True:  settings.get('source_coffee_new_line'),
                     False: settings.get('source_coffee_existing_line')
-                },
-                "text.html.riot": {
-                    True:  settings.get('source_js_new_line'),
-                    False: settings.get('source_js_existing_line')
                 }
             }
 
