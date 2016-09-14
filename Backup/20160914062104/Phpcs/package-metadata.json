@@ -1,0 +1,1 @@
+{"description": "PHP CodeSniffer, PHP Coding Standard Fixer, Linter and Mess Detector Support for Sublime Text", "url": "http://benmatselby.github.io/sublime-phpcs", "platforms": ["*"], "version": "2016.06.04.20.44.08", "sublime_text": "*", "dependencies": []}

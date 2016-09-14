@@ -30,7 +30,6 @@
 		"LESS-build",
 		"Live CSS",
 		"LiveStyle",
-		"MacTerminal",
 		"MarkdownEditing",
 		"Modific",
 		"nginx",
@@ -50,6 +49,7 @@
 		"sublime-github",
 		"SublimeCodeIntel",
 		"SyncedSideBar",
+		"termX",
 		"Theme - Flatland",
 		"Xdebug Client"
 	],
