@@ -1,0 +1,1 @@
+{"description": "Improved syntax support for Nginx configuration files", "url": "https://github.com/brandonwamboldt/sublime-nginx", "platforms": ["*"], "version": "2016.02.17.02.34.24", "sublime_text": "*", "dependencies": []}
