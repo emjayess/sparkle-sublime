@@ -3,7 +3,7 @@
 [
     {
         "keys": [
-            "super+'"
+            "shift+ctrl+;"
         ], 
         "args": {
             "action": "remove_tag"
@@ -31,7 +31,7 @@
     }, 
     {
         "keys": [
-            "alt+shift+forward_slash"
+            "ctrl+shift+forward_slash"
         ], 
         "args": {
             "action": "toggle_comment"
@@ -52,7 +52,7 @@
     }, 
     {
         "keys": [
-            "shift+super+."
+            "shift+ctrl+."
         ], 
         "args": {
             "action": "select_next_item"
@@ -98,7 +98,7 @@
     }, 
     {
         "keys": [
-            "shift+ctrl+d"
+            "ctrl+'"
         ], 
         "args": {
             "action": "encode_decode_data_url"
@@ -112,7 +112,7 @@
     }, 
     {
         "keys": [
-            "shift+super+y"
+            "shift+ctrl+y"
         ], 
         "args": {
             "action": "evaluate_math_expression"
@@ -126,7 +126,7 @@
     }, 
     {
         "keys": [
-            "ctrl+j"
+            "ctrl+shift+0"
         ], 
         "args": {
             "action": "balance_inward"
@@ -140,7 +140,7 @@
     }, 
     {
         "keys": [
-            "ctrl+d"
+            "ctrl+,"
         ], 
         "args": {
             "action": "balance_outward"
@@ -154,7 +154,7 @@
     }, 
     {
         "keys": [
-            "alt+super+up"
+            "shift+alt+up"
         ], 
         "args": {
             "action": "increment_number_by_10"
@@ -168,7 +168,7 @@
     }, 
     {
         "keys": [
-            "shift+super+r"
+            "shift+ctrl+r"
         ], 
         "args": {
             "action": "reflect_css_value"
@@ -196,7 +196,7 @@
     }, 
     {
         "keys": [
-            "shift+super+,"
+            "shift+ctrl+,"
         ], 
         "args": {
             "action": "select_previous_item"
@@ -210,7 +210,7 @@
     }, 
     {
         "keys": [
-            "shift+ctrl+i"
+            "ctrl+u"
         ], 
         "args": {
             "action": "update_image_size"
@@ -238,7 +238,7 @@
     }, 
     {
         "keys": [
-            "shift+super+'"
+            "shift+ctrl+`"
         ], 
         "args": {
             "action": "split_join_tag"
@@ -252,7 +252,7 @@
     }, 
     {
         "keys": [
-            "alt+super+down"
+            "shift+alt+down"
         ], 
         "args": {
             "action": "decrement_number_by_10"
@@ -266,7 +266,7 @@
     }, 
     {
         "keys": [
-            "ctrl+w"
+            "shift+ctrl+g"
         ], 
         "command": "wrap_as_you_type", 
         "context": [
@@ -284,7 +284,7 @@
     }, 
     {
         "keys": [
-            "super+shift+k"
+            "shift+ctrl+'"
         ], 
         "command": "rename_tag", 
         "context": [
@@ -327,7 +327,7 @@
     }, 
     {
         "keys": [
-            "ctrl+shift+t"
+            "ctrl+alt+j"
         ], 
         "args": {
             "action": "matching_pair"
@@ -374,7 +374,7 @@
         "command": "expand_abbreviation_by_tab", 
         "context": [
             {
-                "operand": "source.css, source.sass, source.less, source.scss, source.stylus, source.postcss, source.jade, text.jade, source.pug, text.pug, text.slim, text.xml, text.html - source, text.haml, text.scala.html, source string", 
+                "operand": "source.css, source.sass, source.less, source.scss, source.stylus, source.postcss, source.jade, text.jade, text.slim, text.xml, text.html - source, text.haml, text.scala.html, source string", 
                 "operator": "equal", 
                 "match_all": true, 
                 "key": "selector"
@@ -420,7 +420,7 @@
         "command": "expand_abbreviation_by_tab", 
         "context": [
             {
-                "operand": "source.css, source.sass, source.less, source.scss, source.stylus, source.postcss, source.jade, text.jade, source.pug, text.pug, text.slim, text.xml, text.html - source, text.haml, text.scala.html, source string", 
+                "operand": "source.css, source.sass, source.less, source.scss, source.stylus, source.postcss, source.jade, text.jade, text.slim, text.xml, text.html - source, text.haml, text.scala.html, source string", 
                 "operator": "equal", 
                 "match_all": true, 
                 "key": "selector"
