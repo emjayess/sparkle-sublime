@@ -1,1 +1,1 @@
-{"description": "Run JavaScript in the browser - Sublime plugin (OS X only)", "url": "https://github.com/sindresorhus/sublime-jsrun", "platforms": ["osx"], "version": "2016.02.11.17.33.25", "sublime_text": "*", "dependencies": []}
+{"description": "Run JavaScript in the browser - Sublime plugin (macOS)", "url": "https://github.com/sindresorhus/sublime-jsrun", "platforms": ["osx"], "version": "2017.06.09.15.22.19", "sublime_text": "*", "dependencies": []}

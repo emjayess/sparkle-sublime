@@ -160,13 +160,15 @@ class CommandThread(threading.Thread):
             # get $PATH on Windows. Yay portable code.
             shell = os.name == 'nt'
 
+            if self.working_dir != "":
+                os.chdir(self.working_dir)
+
             if self.console_encoding:
                 self.command = [s.encode(self.console_encoding) for s in self.command]
 
             proc = subprocess.Popen(self.command,
                                     stdout=self.stdout, stderr=subprocess.STDOUT,
                                     stdin=subprocess.PIPE,
-                                    cwd=self.working_dir if self.working_dir != '' else None,
                                     shell=shell, universal_newlines=False)
             output = proc.communicate(self.stdin)[0]
             if not output:

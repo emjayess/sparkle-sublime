@@ -1,1 +1,1 @@
-{"description": "Highlight lines changed since the last commit (supports Git, SVN, Bazaar, Mercurial and TFS) / ST2(3) plugin", "url": "https://github.com/gornostal/Modific", "platforms": ["*"], "version": "2015.12.05.20.31.07", "sublime_text": "*", "dependencies": []}
+{"description": "Highlight lines changed since the last commit (supports Git, SVN, Bazaar, Mercurial and TFS) / ST2(3) plugin", "url": "https://github.com/gornostal/Modific", "platforms": ["*"], "version": "2017.06.10.06.23.55", "sublime_text": "*", "dependencies": []}
