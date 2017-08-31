@@ -38,8 +38,7 @@
     // Options include:
     // - Sniffer
     // - Fixer
-    // - MessDetector
-    // - CodeBeautifier
+    // - Mess Detector
     //
     // This will prepend the application with the path to php
     // Needed for windows, or anyone who doesn't/can't make phars
