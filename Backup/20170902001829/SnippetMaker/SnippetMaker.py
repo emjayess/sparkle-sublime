@@ -90,13 +90,14 @@ class MakeSnippetCommand(sublime_plugin.TextCommand):
             file_name
         )
 
-        dir_path = os.path.join(
-            sublime.packages_path(),
-            'User',
-            location
-        )
-        if not os.path.exists(dir_path):
-            os.makedirs(dir_path)
+        if int(sublime.version()) < 3000:
+            dir_path = os.path.join(
+                sublime.packages_path(),
+                'User',
+                location
+            )
+            if not os.path.exists(dir_path):
+                os.makedirs(dir_path)
 
         if os.path.exists(file_path) and not sublime.ok_cancel_dialog(
             'Override %s?' % file_name
@@ -153,8 +154,7 @@ class EditSnippetCommand(sublime_plugin.WindowCommand):
         )
 
     def is_visible(self):
-        return int(sublime.version()) > 3000
-
+        int(sublime.version()) > 3000
 
 class DeleteSnippetCommand(sublime_plugin.WindowCommand):
     def run(self):
