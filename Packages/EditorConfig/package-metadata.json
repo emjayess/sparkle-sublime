@@ -1,0 +1,1 @@
+{"description": "Helps developers maintain consistent coding styles between different editors - Sublime Text plugin", "url": "https://github.com/sindresorhus/editorconfig-sublime", "platforms": ["*"], "version": "2017.06.09.15.13.24", "sublime_text": "*", "dependencies": []}
