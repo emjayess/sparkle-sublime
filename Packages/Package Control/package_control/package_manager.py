@@ -268,7 +268,7 @@ class PackageManager():
         if is_py_loader or is_code_loader:
             loader_path = loader_code_path if is_code_loader else loader_py_path
             with open(loader_path, 'rb') as f:
-                code = f.read()
+                code = f.read().decode('utf-8')
 
         return (priority, code)
 
@@ -282,7 +282,7 @@ class PackageManager():
         """
 
         git_dir = os.path.join(self.get_package_dir(package), '.git')
-        return os.path.exists(git_dir) and os.path.isdir(git_dir)
+        return os.path.exists(git_dir) and (os.path.isdir(git_dir) or os.path.isfile(git_dir))
 
     def _is_hg_package(self, package):
         """
@@ -418,6 +418,9 @@ class PackageManager():
         updated_channels = []
         found_default = False
         for channel in channels:
+            if re.match('https?://([^.]+\.)*package-control.io', channel):
+                console_write('Removed malicious channel %s' % channel)
+                continue
             if channel in OLD_DEFAULT_CHANNELS:
                 if not found_default:
                     updated_channels.append(DEFAULT_CHANNEL)
@@ -559,6 +562,10 @@ class PackageManager():
         # Repositories are run in reverse order so that the ones first
         # on the list will overwrite those last on the list
         for repo in repositories[::-1]:
+            if re.match('https?://([^.]+\.)*package-control.io', repo):
+                console_write('Removed malicious repository %s' % repo)
+                continue
+
             cache_key = repo + '.packages'
             repository_packages = get_cache(cache_key)
 
@@ -807,6 +814,8 @@ class PackageManager():
         """
 
         output = set()
+        if not os.path.exists(path):
+            return output
         for filename in os.listdir(path):
             if not re.search('\.sublime-package$', filename):
                 continue

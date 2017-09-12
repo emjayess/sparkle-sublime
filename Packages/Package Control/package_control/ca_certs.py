@@ -90,6 +90,32 @@ def get_user_ca_bundle_path(settings):
     return user_ca_bundle_path
 
 
+def print_cert_subject(cert, reason):
+    """
+    :param cert:
+        The asn1crypto.x509.Certificate object
+
+    :param reason:
+        None if being exported, or a unicode string of the reason not being
+        exported
+    """
+
+    if reason is None:
+        console_write(
+            u'''
+            Exported certificate: %s
+            ''',
+            cert.subject.human_friendly
+        )
+    else:
+        console_write(
+            u'''
+            Skipped certificate: %s - reason %s
+            ''',
+            (cert.subject.human_friendly, reason)
+        )
+
+
 def get_system_ca_bundle_path(settings):
     """
     Get the filesystem path to the system CA bundle. On Linux it looks in a
@@ -137,7 +163,7 @@ def get_system_ca_bundle_path(settings):
                     Generating new CA bundle from system keychain
                     '''
                 )
-            trust_list.get_path(ca_bundle_dir, hours_to_cache)
+            trust_list.get_path(ca_bundle_dir, hours_to_cache, cert_callback=print_cert_subject)
             if debug:
                 console_write(
                     u'''
@@ -197,4 +223,9 @@ def ensure_ca_bundle_dir():
     if not ca_bundle_dir:
         ca_bundle_dir = os.path.join(sublime.packages_path(), 'User')
     if not os.path.exists(ca_bundle_dir):
-        os.mkdir(ca_bundle_dir)
+        try:
+            os.mkdir(ca_bundle_dir)
+        except PermissionError:
+            ca_bundle_dir = '/var/tmp/package_control'
+            if not os.path.exists(ca_bundle_dir):
+                 os.mkdir(ca_bundle_dir)

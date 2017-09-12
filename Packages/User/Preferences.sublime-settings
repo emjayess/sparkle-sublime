@@ -18,6 +18,7 @@
 	"ignored_packages":
 	[
 		"Live CSS",
+		"Package Control",
 		"Phpcs",
 		"PhpDoc",
 		"PHPUnit",
