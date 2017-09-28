@@ -1,0 +1,18 @@
+[
+{
+    "caption": "MDE: Fold Section",
+    "command": "fold_section_context"
+},
+{
+    "caption": "MDE: Unfold Section",
+    "command": "unfold_section_context"
+},
+{
+    "caption": "MDE: Jump Reference",
+    "command": "reference_jump_context"
+},
+{
+    "caption": "MDE: Convert inline link to reference",
+    "command": "convert_inline_link_to_reference"
+}
+]
