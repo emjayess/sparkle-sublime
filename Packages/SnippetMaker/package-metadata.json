@@ -1,1 +1,1 @@
-{"description": "Makes managing snippets easy in Sublime Text", "url": "https://github.com/jugyo/SublimeSnippetMaker", "platforms": ["*"], "version": "2.0.2", "sublime_text": "*", "dependencies": []}
+{"description": "Makes managing snippets easy in Sublime Text", "url": "https://github.com/jugyo/SublimeSnippetMaker", "platforms": ["*"], "version": "2.1.0", "sublime_text": "*", "dependencies": []}

@@ -12,14 +12,21 @@
                 "children":
                 [
                     {
-                        "caption": "SnippetMaker",
+                        "caption": "SublimeSnippetMaker",
                         "children":
                         [
                             {
                                 "caption": "Settings",
                                 "command": "edit_settings",
                                 "args": {
-                                    "base_file": "${packages}/SnippetMaker/SnippetMaker.sublime-settings"
+                                    "base_file": "${packages}/SublimeSnippetMaker/SnippetMaker.sublime-settings"
+                                }
+                            },
+                            {
+                                "caption": "Settings (Sublime Text 2)",
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/User/SnippetMaker.sublime-settings"
                                 }
                             }
                         ]
