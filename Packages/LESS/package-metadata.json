@@ -1,1 +1,1 @@
-{"description": "LESS syntax highlighting for Sublime Text.", "url": "https://sublime.wbond.net/packages/LESS", "platforms": ["*"], "version": "2017.11.01.21.12.29", "sublime_text": "*", "dependencies": []}
+{"description": "LESS syntax highlighting for Sublime Text.", "url": "https://sublime.wbond.net/packages/LESS", "platforms": ["*"], "version": "1.0.1", "sublime_text": "*", "dependencies": []}
